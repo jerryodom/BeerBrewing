@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlcoholCalculation", "AlcoholCalculation\AlcoholCalculation.csproj", "{D595D4CC-5114-44AC-B4DC-313597E804FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlcoholCalculationTests", "AlcoholCalculationTests\AlcoholCalculationTests.csproj", "{BBAEA5A6-828D-497C-AD78-F76AA15651F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{D595D4CC-5114-44AC-B4DC-313597E804FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D595D4CC-5114-44AC-B4DC-313597E804FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D595D4CC-5114-44AC-B4DC-313597E804FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +60,6 @@ Global
 		{59D0FC68-0037-48C7-A0A0-FDA4DE78CB80} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{95C999DB-A87A-406E-9685-925FED80C362} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{D595D4CC-5114-44AC-B4DC-313597E804FF} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{BBAEA5A6-828D-497C-AD78-F76AA15651F1} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 	EndGlobalSection
 EndGlobal
