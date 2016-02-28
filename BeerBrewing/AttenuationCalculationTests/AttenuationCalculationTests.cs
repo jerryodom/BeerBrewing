@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AttenuationCalculation;
+using Core;
 
 namespace AttenuationCalculationTests
 {
@@ -14,8 +15,7 @@ namespace AttenuationCalculationTests
             ICalculateAttenuation calculator = calculatorFactory.GetCalculator("Real");
             calculator.StartingGravity = 1.05;
             calculator.EndingGravity = 1.01;
-            calculator.CalculateAttenuation();
-            var realAttenuation = calculator.CalculateAttenuation();
+            var realAttenuation = (calculator as Calculator).Calculate();
             Assert.AreEqual(65.72584, realAttenuation);
 
         }
@@ -26,7 +26,7 @@ namespace AttenuationCalculationTests
             ICalculateAttenuation calculator = calculatorFactory.GetCalculator("Apparent");
             calculator.StartingGravity = 1.05;
             calculator.EndingGravity = 1.01;
-            var apparentAttenuation = calculator.CalculateAttenuation();
+            var apparentAttenuation = (calculator as Calculator).Calculate();
             Assert.AreEqual(80, apparentAttenuation);
 
         }

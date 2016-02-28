@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core;
 
 namespace AttenuationCalculation
 {
@@ -35,10 +36,9 @@ namespace AttenuationCalculation
     {
         double StartingGravity { get; set; }
         double EndingGravity { get; set; }
-
-        double CalculateAttenuation();
+        
     }
-    public class ApparentAttenuationCalculation : ICalculateAttenuation
+    public class ApparentAttenuationCalculation : Calculator, ICalculateAttenuation
     {
         public double EndingGravity
         {
@@ -50,7 +50,7 @@ namespace AttenuationCalculation
             get; set;
         }
 
-        public double CalculateAttenuation()
+        public override double Calculate()
         {
             if (this.StartingGravity == 1)
                 throw new ArgumentOutOfRangeException("StartingGravity", 1, "1 is not a valid value for StartingGravity");
@@ -58,7 +58,7 @@ namespace AttenuationCalculation
         }
     }
 
-    public class RealAttenuationCalculation : ICalculateAttenuation
+    public class RealAttenuationCalculation : Calculator,  ICalculateAttenuation
     {
         public double EndingGravity
         {
@@ -70,7 +70,7 @@ namespace AttenuationCalculation
             get; set;
         }
 
-        public double CalculateAttenuation()
+        public override double Calculate()
         {
             if (this.StartingGravity == 1)
                 throw new ArgumentOutOfRangeException("StartingGravity", 1, "1 is not a valid value for StartingGravity");

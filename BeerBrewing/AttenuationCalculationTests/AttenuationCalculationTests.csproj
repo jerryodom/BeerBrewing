@@ -58,6 +58,10 @@
       <Project>{f721503d-26a7-485a-9790-25ca6cf6aa50}</Project>
       <Name>AttenuationCalculation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{95c999db-a87a-406e-9685-925fed80c362}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttenuationCalculation", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttenuationCalculationTests", "AttenuationCalculationTests\AttenuationCalculationTests.csproj", "{59D0FC68-0037-48C7-A0A0-FDA4DE78CB80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{95C999DB-A87A-406E-9685-925FED80C362}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{59D0FC68-0037-48C7-A0A0-FDA4DE78CB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59D0FC68-0037-48C7-A0A0-FDA4DE78CB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59D0FC68-0037-48C7-A0A0-FDA4DE78CB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95C999DB-A87A-406E-9685-925FED80C362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C999DB-A87A-406E-9685-925FED80C362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95C999DB-A87A-406E-9685-925FED80C362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95C999DB-A87A-406E-9685-925FED80C362}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,5 +46,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F721503D-26A7-485A-9790-25CA6CF6AA50} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{59D0FC68-0037-48C7-A0A0-FDA4DE78CB80} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{95C999DB-A87A-406E-9685-925FED80C362} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 	EndGlobalSection
 EndGlobal
