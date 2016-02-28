@@ -52,8 +52,8 @@ namespace AlcoholCalculation
 
         public override double Calculate()
         {
-            if (this.EndingGravity == 1)
-                throw new ArgumentOutOfRangeException("EndingGravity", 1, "1 is not a valid value for EndingGravity");
+            if (this.EndingGravity == 0)
+                throw new ArgumentOutOfRangeException("EndingGravity", 0, "0 is not a valid value for EndingGravity");
             return ((((double)1.05 * (this.StartingGravity - this.EndingGravity)) / this.EndingGravity) / (double)0.79) * 100;
         }
     }
