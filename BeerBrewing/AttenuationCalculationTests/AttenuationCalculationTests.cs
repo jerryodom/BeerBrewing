@@ -39,7 +39,7 @@ namespace AttenuationCalculationTests
                 ICalculateAttenuation calculator = calculatorFactory.GetCalculator(null);
                 calculator.StartingGravity = 1.05;
                 calculator.EndingGravity = 1.01;
-                var apparentAttenuation = calculator.CalculateAttenuation();
+                var apparentAttenuation = (calculator as Calculator).Calculate();
             }
             catch(Exception ex)
             {
