@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlcoholCalculation", "Alcoh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlcoholCalculationTests", "AlcoholCalculationTests\AlcoholCalculationTests.csproj", "{BBAEA5A6-828D-497C-AD78-F76AA15651F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilOffCalculation", "BoilOffCalculator\BoilOffCalculation.csproj", "{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilOffCalculationTests", "BoilOffCalculationTests\BoilOffCalculationTests.csproj", "{360D5856-2135-442C-95ED-E4D26DFF1737}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBAEA5A6-828D-497C-AD78-F76AA15651F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360D5856-2135-442C-95ED-E4D26DFF1737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360D5856-2135-442C-95ED-E4D26DFF1737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360D5856-2135-442C-95ED-E4D26DFF1737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360D5856-2135-442C-95ED-E4D26DFF1737}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,5 +73,7 @@ Global
 		{95C999DB-A87A-406E-9685-925FED80C362} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{D595D4CC-5114-44AC-B4DC-313597E804FF} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{BBAEA5A6-828D-497C-AD78-F76AA15651F1} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{360D5856-2135-442C-95ED-E4D26DFF1737} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 	EndGlobalSection
 EndGlobal
