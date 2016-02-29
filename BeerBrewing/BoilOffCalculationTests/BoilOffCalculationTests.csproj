@@ -53,6 +53,16 @@
     <Compile Include="BoilOffCalculationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoilOffCalculator\BoilOffCalculation.csproj">
+      <Project>{df4d33e4-13c1-466c-8dbe-fec8b00b9f15}</Project>
+      <Name>BoilOffCalculation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{95c999db-a87a-406e-9685-925fed80c362}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

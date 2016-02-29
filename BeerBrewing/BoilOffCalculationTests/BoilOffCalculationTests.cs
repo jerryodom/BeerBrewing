@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core;
+using BoilOffCalculaton;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace BoilOffCalculationTests
 {
@@ -9,6 +11,13 @@ namespace BoilOffCalculationTests
         [TestMethod]
         public void CalculateBoilOff_Passes()
         {
+            ICalculateBoilOffFactory calculatorFactory = new CalculateBoilOffFactory();
+            ICalculateBoilOff calculator = calculatorFactory.GetCalculator(null);
+            calculator.BoilTimeInMinutes = 60;
+            calculator.StartingVolumeInGallons = 5;
+            calculator.EvaporationRateInPercent = 4;
+            var boiledOffVolumeInGalls = (calculator as Calculator).Calculate();
+            Assert.AreEqual(0.2, boiledOffVolumeInGalls);
         }
     }
 }

@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public abstract class Calculator
+    public abstract class Calculator : ICalculate
     {
         public abstract double Calculate();
     }
+
+    public interface ICalculate
+    {
+        double Calculate();
+    }
+
+
 }
