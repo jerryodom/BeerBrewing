@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilOffCalculation", "BoilO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilOffCalculationTests", "BoilOffCalculationTests\BoilOffCalculationTests.csproj", "{360D5856-2135-442C-95ED-E4D26DFF1737}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeShrinkageFromCoolingCalculationTests", "VolumeShrinkageFromCoolingCalculation\VolumeShrinkageFromCoolingCalculationTests.csproj", "{DF787505-786B-426A-B062-E45A95D032D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeShrinkageFromCoolingCalculation", "VolumeShrinkageFromCoolingCalculationClass\VolumeShrinkageFromCoolingCalculation.csproj", "{EF235474-1461-4F71-86EA-D804EDA1AF75}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +67,14 @@ Global
 		{360D5856-2135-442C-95ED-E4D26DFF1737}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360D5856-2135-442C-95ED-E4D26DFF1737}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360D5856-2135-442C-95ED-E4D26DFF1737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF787505-786B-426A-B062-E45A95D032D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF787505-786B-426A-B062-E45A95D032D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF787505-786B-426A-B062-E45A95D032D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF787505-786B-426A-B062-E45A95D032D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF235474-1461-4F71-86EA-D804EDA1AF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF235474-1461-4F71-86EA-D804EDA1AF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF235474-1461-4F71-86EA-D804EDA1AF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF235474-1461-4F71-86EA-D804EDA1AF75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,5 +87,7 @@ Global
 		{BBAEA5A6-828D-497C-AD78-F76AA15651F1} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{DF4D33E4-13C1-466C-8DBE-FEC8B00B9F15} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{360D5856-2135-442C-95ED-E4D26DFF1737} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{DF787505-786B-426A-B062-E45A95D032D5} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{EF235474-1461-4F71-86EA-D804EDA1AF75} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 	EndGlobalSection
 EndGlobal
