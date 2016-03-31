@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalVolumeCalculation", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalVolumeCalculationTests", "FinalVolumeCalculationTests\FinalVolumeCalculationTests.csproj", "{7EDC82F3-0392-4C76-83A5-C194AD20A24D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalGravityCalculationTests", "FinalGravityCalculationTests\FinalGravityCalculationTests.csproj", "{2A7C78DC-3472-4D13-8607-1C3C931F1730}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinalGravityCalculation", "FinalGravityCalculation\FinalGravityCalculation.csproj", "{F1886C0D-1EAA-46F6-BD3B-B1605231CD54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{7EDC82F3-0392-4C76-83A5-C194AD20A24D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EDC82F3-0392-4C76-83A5-C194AD20A24D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EDC82F3-0392-4C76-83A5-C194AD20A24D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7C78DC-3472-4D13-8607-1C3C931F1730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7C78DC-3472-4D13-8607-1C3C931F1730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7C78DC-3472-4D13-8607-1C3C931F1730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7C78DC-3472-4D13-8607-1C3C931F1730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1886C0D-1EAA-46F6-BD3B-B1605231CD54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1886C0D-1EAA-46F6-BD3B-B1605231CD54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1886C0D-1EAA-46F6-BD3B-B1605231CD54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1886C0D-1EAA-46F6-BD3B-B1605231CD54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,5 +115,7 @@ Global
 		{EF235474-1461-4F71-86EA-D804EDA1AF75} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{685529E2-8F60-4FAA-A577-DC70EE17495A} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{7EDC82F3-0392-4C76-83A5-C194AD20A24D} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{2A7C78DC-3472-4D13-8607-1C3C931F1730} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{F1886C0D-1EAA-46F6-BD3B-B1605231CD54} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 	EndGlobalSection
 EndGlobal

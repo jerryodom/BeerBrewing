@@ -9,7 +9,7 @@ namespace FinalVolumeCalculationTests
     public class FinalVolumeCalculationTests
     {
         [TestMethod]
-        public void FinalVolume_CalculationTest()
+        public void FinalVolumeCalculation_Passes()
         {
             ICalculateBoilOffFactory volumeCalculationFactory = new CalculateBoilOffFactory();
             var calculator = volumeCalculationFactory.GetCalculator(null);
