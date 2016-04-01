@@ -32,6 +32,8 @@ namespace CarbonationCalculation
         public double CalculateCarbonation(CarbonationCalculation carbonationDetails)
         {
             return ((double)21.27 * carbonationDetails.BeerVolumeInGallons) * (carbonationDetails.DesiredCarbonationInVolumes - (double)3.0378 + (double).050062 * carbonationDetails.BeerTemperatureInFahrenheit - (double).00026555 * carbonationDetails.BeerTemperatureInFahrenheit * carbonationDetails.BeerTemperatureInFahrenheit);
+
+            //var sugaringrams = ((double)21.27 * bv) * (_cO2Volumes - (double)3.0378 + (double).050062 * bt - (double).00026555 * bt * bt);
         }
     }
 
