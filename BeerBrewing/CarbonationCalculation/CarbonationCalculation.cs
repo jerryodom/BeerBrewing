@@ -27,18 +27,30 @@ namespace CarbonationCalculation
         double CalculateCarbonation(CarbonationCalculation carbonationDetails);
     }
 
-    public class CarbonateUsingDmeStrategy : ICarbonationStrategy
+    public class CarbonateUsingCaneSugarReturnsGramsStrategy : ICarbonationStrategy
+    {
+        public double CalculateCarbonation(CarbonationCalculation carbonationDetails)
+        {
+            return ((double)17.195 * carbonationDetails.BeerVolumeInGallons) * (carbonationDetails.DesiredCarbonationInVolumes - (double)3.0378 + (double).050062 * carbonationDetails.BeerTemperatureInFahrenheit - (double).00026555 * carbonationDetails.BeerTemperatureInFahrenheit * carbonationDetails.BeerTemperatureInFahrenheit);
+        }
+    }
+    public class CarbonateUsingHoneyReturnsGramsStrategy : ICarbonationStrategy
+    {
+        public double CalculateCarbonation(CarbonationCalculation carbonationDetails)
+        {
+            return ((double)17.195 * carbonationDetails.BeerVolumeInGallons) * (carbonationDetails.DesiredCarbonationInVolumes - (double)3.0378 + (double).050062 * carbonationDetails.BeerTemperatureInFahrenheit - (double).00026555 * carbonationDetails.BeerTemperatureInFahrenheit * carbonationDetails.BeerTemperatureInFahrenheit);
+        }
+    }
+    public class CarbonateUsingDmeReturnsGramsStrategy : ICarbonationStrategy
     {
         public double CalculateCarbonation(CarbonationCalculation carbonationDetails)
         {
             return ((double)21.27 * carbonationDetails.BeerVolumeInGallons) * (carbonationDetails.DesiredCarbonationInVolumes - (double)3.0378 + (double).050062 * carbonationDetails.BeerTemperatureInFahrenheit - (double).00026555 * carbonationDetails.BeerTemperatureInFahrenheit * carbonationDetails.BeerTemperatureInFahrenheit);
-
-            //var sugaringrams = ((double)21.27 * bv) * (_cO2Volumes - (double)3.0378 + (double).050062 * bt - (double).00026555 * bt * bt);
         }
     }
 
 
-    public class CarbonateUsingForcedPressureStrategy : ICarbonationStrategy
+    public class CarbonateUsingForcedPressureReturnsPsiStrategy : ICarbonationStrategy
     {
         public double CalculateCarbonation(CarbonationCalculation carbonationDetails)
         {
