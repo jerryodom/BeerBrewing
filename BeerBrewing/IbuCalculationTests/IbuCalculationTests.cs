@@ -7,7 +7,7 @@ namespace IbuCalculationTests
     public class IbuCalculationTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void IbuCalculationTest_Tinseth_Passes()
         {
         }
     }

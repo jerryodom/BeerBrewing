@@ -16,11 +16,11 @@ namespace CarbonationCalculationTests
             carbonationCalculator.BeerVolumeInGallons = 5;
             carbonationCalculator.BeerTemperatureInFahrenheit = 32;
             carbonationCalculator.DesiredCarbonationInVolumes = 3;
-            carbonationCalculator.SetCarbonationType(new CarbonateUsingForcedPressureStrategy());
+            carbonationCalculator.SetCarbonationType(new CarbonateUsingForcedPressureReturnsPsiStrategy());
             double carbonationPressureNeeded = (carbonationCalculator as Calculator).Calculate();
             Assert.AreEqual(12.92, Math.Round(carbonationPressureNeeded, 2));
 
-            carbonationCalculator.SetCarbonationType(new CarbonateUsingDmeStrategy());
+            carbonationCalculator.SetCarbonationType(new CarbonateUsingDmeReturnsGramsStrategy());
             var gramsOfDmeNeeded = (carbonationCalculator as Calculator).Calculate();
             Assert.AreEqual(151.10, Math.Round(gramsOfDmeNeeded, 2));
 
