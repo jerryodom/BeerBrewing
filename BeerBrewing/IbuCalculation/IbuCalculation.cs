@@ -9,13 +9,13 @@ namespace IbuCalculation
 {
     public interface ICalculateIbuFactory
     {
-        ICalculateIbu GetCalculator(string CalculationType);
+        ICalculateIbu GetCalculator();
 
     }
 
     public class CalculateIbuFactory : ICalculateIbuFactory
     {
-        public ICalculateIbu GetCalculator(string CalculationType)
+        public ICalculateIbu GetCalculator()
         {
             return new IbuCalculation();
         }
@@ -33,8 +33,12 @@ namespace IbuCalculation
         {
             if (ibuDetails.BatchVolumeInGallons> 0 && ibuDetails.AlphaAcids > 0 && ibuDetails.HopeQuantityInOunces > 0)
             {
-                double val = ibuDetails.GetUtilization() * (ibuDetails.HopeQuantityInOunces * (ibuDetails.HopeQuantityInOunces / 100) * 7490) / ibuDetails.BatchVolumeInGallons;
-                return val;
+                var milligramsLiterOfAA = (ibuDetails.AlphaAcids / 100 * ibuDetails.HopeQuantityInOunces * 7490) / ibuDetails.BatchVolumeInGallons;
+                var bignessFactor = 1.65 * System.Math.Pow(0.000125, (ibuDetails.BatchOriginalGravity - 1));
+                var boilTimeFactor = (1 - System.Math.Pow(2.71828, (-0.04 * ibuDetails.BoilTimeInMinutes)))/4.15;
+                var utilization = ibuDetails.BatchOriginalGravity * boilTimeFactor;
+                var ibus = utilization * milligramsLiterOfAA;
+                return ibus;
             }
             else
             {
@@ -63,9 +67,7 @@ namespace IbuCalculation
         double BoilTimeInMinutes { get; set; }
 
         double HopeQuantityInOunces { get; set; }
-
-        double GetUtilization();
-
+        
         IIbuStrategy IbuCalculationType { get; set; }
 
         void SetIbuType(IIbuStrategy ibuStrategy);
@@ -112,26 +114,10 @@ namespace IbuCalculation
             return this.IbuCalculationType.CalculateIbus(this);
         }
 
-        public double GetUtilization()
-        {
-            double val = 0;
-            if (this.BatchOriginalGravity > 0)
-            {
-                double part1 = System.Math.Pow(0.000125, (this.BatchOriginalGravity - 1));
-                double part2 = System.Math.Pow(2.72, (-0.04 * this.BoilTimeInMinutes));
-                val = (1.65 * part1) * (1 - part2) / 4.14;
-
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("BatchOriginalGravity", "Batch Original Gravity Must Be Greater Than Zero");
-            }
-            return val;
-        }
 
         public void SetIbuType(IIbuStrategy ibuStrategy)
         {
-            throw new NotImplementedException();
+            this.IbuCalculationType = ibuStrategy;
         }
     }
 
