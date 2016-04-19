@@ -50,7 +50,14 @@ namespace IbuCalculation
     {
         public double CalculateIbus(IbuCalculation ibuDetails)
         {
-            throw new NotImplementedException();
+            double gravityAdjustment = 0;
+            if(ibuDetails.BatchOriginalGravity > 1.050)
+            {
+                gravityAdjustment = ibuDetails.BatchOriginalGravity - 1.050 / 0.2;
+            }
+            var utilization = 18.11 + (13.86 * Math.Tanh((ibuDetails.BoilTimeInMinutes - 31.32) / 18.27));
+            var ibus = (ibuDetails.HopeQuantityInOunces * utilization/100 * ibuDetails.AlphaAcids/100 * 7462) / (ibuDetails.BatchVolumeInGallons * (1 + gravityAdjustment));
+            return ibus;
         }
     }
 
