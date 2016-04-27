@@ -83,6 +83,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerWeightToVolumeCalculati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CalculatedTypeInterpretor", "Core.CalculatedTypeInterpretor\Core.CalculatedTypeInterpretor.csproj", "{D88DE838-48C1-4E2B-9741-7E5B4AD92D79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CalculatedTypeInterpretorTests", "Core.CalculatedTypeInterpretorTests\Core.CalculatedTypeInterpretorTests.csproj", "{75A05668-5B24-4EBB-B3B6-3B11265441A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,10 @@ Global
 		{D88DE838-48C1-4E2B-9741-7E5B4AD92D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D88DE838-48C1-4E2B-9741-7E5B4AD92D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D88DE838-48C1-4E2B-9741-7E5B4AD92D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A05668-5B24-4EBB-B3B6-3B11265441A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A05668-5B24-4EBB-B3B6-3B11265441A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A05668-5B24-4EBB-B3B6-3B11265441A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A05668-5B24-4EBB-B3B6-3B11265441A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,5 +270,6 @@ Global
 		{ECC1E230-CCB0-48E1-864F-59872D04AACA} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{B52CDD11-A248-4028-825B-D50AB422D556} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 		{D88DE838-48C1-4E2B-9741-7E5B4AD92D79} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
+		{75A05668-5B24-4EBB-B3B6-3B11265441A1} = {4F797745-1F32-4D47-BA2D-9487E21D4748}
 	EndGlobalSection
 EndGlobal

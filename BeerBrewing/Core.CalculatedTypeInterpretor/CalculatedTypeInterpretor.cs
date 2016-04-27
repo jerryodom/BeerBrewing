@@ -8,12 +8,12 @@ namespace Core.CalculatedTypeInterpretor
 {
     public abstract class CalculatedTypeInterpretor
     {
-        public abstract double Interpret(Calculator calculator);
+        public abstract double Interpret(ICalculate calculator);
     }
 
     public class OriginalGravityToBrixCalculatedTypeInterpretor : CalculatedTypeInterpretor
     {
-        public override double Interpret(Calculator calculator)
+        public override double Interpret(ICalculate calculator)
         {
             if(calculator.CalculatedType == CalculatableTypes.OriginalGravity)
             {
@@ -28,7 +28,7 @@ namespace Core.CalculatedTypeInterpretor
     }
     public class OriginalGravityToPlatoCalculatedTypeInterpretor : CalculatedTypeInterpretor
     {
-        public override double Interpret(Calculator calculator)
+        public override double Interpret(ICalculate calculator)
         {
             if (calculator.CalculatedType == CalculatableTypes.OriginalGravity)
             {
