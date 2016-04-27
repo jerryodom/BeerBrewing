@@ -28,6 +28,10 @@ namespace FinalGravityCalculation
     }
     public class FinalGravityCalculation : Calculator, ICalculateFinalGravity
     {
+        public FinalGravityCalculation() : base(CalculatableTypes.OriginalGravity)
+        {
+
+        }
         public double FinalVolume
         {
             get; set;

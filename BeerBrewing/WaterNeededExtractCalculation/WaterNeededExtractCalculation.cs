@@ -46,6 +46,7 @@ namespace WaterNeededExtractCalculation
 
     public class WaterNeededExtractCalculation : Calculator, ICalculateWaterNeededExtract
     {
+        public WaterNeededExtractCalculation() : base(CalculatableTypes.USGallons) { }
 
         public double GetBoiledOffVolumeInGallons()
         {

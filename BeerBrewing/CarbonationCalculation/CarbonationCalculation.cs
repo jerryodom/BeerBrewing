@@ -71,6 +71,9 @@ namespace CarbonationCalculation
 
     public class CarbonationCalculation : Calculator, ICalculateCarbonation
     {
+        public CarbonationCalculation() : base(CalculatableTypes.PSI)
+        {
+        }
         public double BeerTemperatureInFahrenheit
         {
             get; set;

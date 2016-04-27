@@ -40,6 +40,10 @@ namespace AlcoholCalculation
     }
     public class AlcoholByVolumeCalculation : Calculator, ICalculateAlcohol
     {
+        public AlcoholByVolumeCalculation() : base(CalculatableTypes.Percentage)
+        {
+
+        }
         public double EndingGravity
         {
             get; set;

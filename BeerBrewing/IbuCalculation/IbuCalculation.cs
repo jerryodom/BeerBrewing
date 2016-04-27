@@ -81,6 +81,10 @@ namespace IbuCalculation
     }
     public class IbuCalculation : Calculator, ICalculateIbu
     {
+        public IbuCalculation() : base(CalculatableTypes.IBU)
+        {
+
+        }
         public double AlphaAcids
         {
             get; set;

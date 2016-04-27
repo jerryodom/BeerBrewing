@@ -30,6 +30,10 @@ namespace BoilOffCalculaton
     }
     public class BoilOffByVolumeCalculation : Calculator, ICalculateBoilOff
     {
+        public BoilOffByVolumeCalculation() : base(CalculatableTypes.USGallons)
+        {
+
+        }
         public double BoilTimeInMinutes
         {
             get; set;

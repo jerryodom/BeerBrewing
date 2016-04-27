@@ -40,6 +40,10 @@ namespace AttenuationCalculation
     }
     public class ApparentAttenuationCalculation : Calculator, ICalculateAttenuation
     {
+        public ApparentAttenuationCalculation() : base(CalculatableTypes.Percentage)
+        {
+
+        }
         public double EndingGravity
         {
             get; set;

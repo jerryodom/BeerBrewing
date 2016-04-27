@@ -22,6 +22,7 @@ namespace VolumeShrinkageFromCoolingCalculation
     }
     public class VolumeShrinkageFromCoolingCalculation : Calculator, ICalculateVolumeShrinkageFromCooling
     {
+        public VolumeShrinkageFromCoolingCalculation() : base(CalculatableTypes.USGallons) { }
         public double CoolingLossInPercent
         {
             get; set;

@@ -21,6 +21,10 @@ namespace FinalVolumeCalculation
 
     public class FinalVolumeCalculation : Calculator, ICalculateFinalVolume
     {
+        public FinalVolumeCalculation() : base(CalculatableTypes.USGallons)
+        {
+
+        }
         public double BoilOffInGallons
         {
             get; set;
