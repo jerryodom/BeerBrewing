@@ -17,7 +17,23 @@ namespace Core.CalculatedTypeInterpretor
         {
             if(calculator.CalculatedType == CalculatableTypes.OriginalGravity)
             {
-                return 0;
+                var originalValue = calculator.Calculate();
+                return (((182.4601 * originalValue - 775.6821) * originalValue + 1262.7794) * originalValue - 669.5622);
+            }
+            else
+            {
+                throw new InvalidOperationException("Calculator must have CalculatedType of OriginalGravity to be valid!");
+            }
+        }
+    }
+    public class OriginalGravityToPlatoCalculatedTypeInterpretor : CalculatedTypeInterpretor
+    {
+        public override double Interpret(Calculator calculator)
+        {
+            if (calculator.CalculatedType == CalculatableTypes.OriginalGravity)
+            {
+                var originalValue = calculator.Calculate();
+                return ((-1 * 616.868) + (1111.14 * originalValue) - (630.272 * (originalValue * originalValue)) + (135.997 * (originalValue* originalValue* originalValue)));
             }
             else
             {
