@@ -12,10 +12,10 @@ namespace AttenuationCalculationTests
         public void RealAttenuationTestMethod_Passes()
         {
             ICalculateAttenuationFactory calculatorFactory = new CalculateAttenuationFactory();
-            ICalculateAttenuation calculator = calculatorFactory.GetCalculator("Real");
+            ICalculateAttenuation calculator = calculatorFactory.GetCalculator(new RealAttenuationStrategy());
             calculator.StartingGravity = 1.05;
             calculator.EndingGravity = 1.01;
-            var realAttenuation = (calculator as Calculator).Calculate();
+            var realAttenuation = calculator.Calculate();
             Assert.AreEqual(65.72584, realAttenuation);
 
         }
@@ -23,29 +23,13 @@ namespace AttenuationCalculationTests
         public void ApparentAttenuationTestMethod_Passes()
         {
             ICalculateAttenuationFactory calculatorFactory = new CalculateAttenuationFactory();
-            ICalculateAttenuation calculator = calculatorFactory.GetCalculator("Apparent");
+            ICalculateAttenuation calculator = calculatorFactory.GetCalculator(new ApparentAttenuationStrategy());
             calculator.StartingGravity = 1.05;
             calculator.EndingGravity = 1.01;
-            var apparentAttenuation = (calculator as Calculator).Calculate();
+            var apparentAttenuation = calculator.Calculate();
             Assert.AreEqual(80, apparentAttenuation);
 
         }
-        [TestMethod]
-        public void ApparentAttenuationTestMethod_Fails_BadArgument()
-        {
-            try
-            {
-                ICalculateAttenuationFactory calculatorFactory = new CalculateAttenuationFactory();
-                ICalculateAttenuation calculator = calculatorFactory.GetCalculator(null);
-                calculator.StartingGravity = 1.05;
-                calculator.EndingGravity = 1.01;
-                var apparentAttenuation = (calculator as Calculator).Calculate();
-            }
-            catch(Exception ex)
-            {
-                Assert.IsInstanceOfType(ex, typeof(ArgumentOutOfRangeException));
-            }
 
-        }
     }
 }

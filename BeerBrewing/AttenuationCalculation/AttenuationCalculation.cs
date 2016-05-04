@@ -9,26 +9,40 @@ namespace AttenuationCalculation
 {
     public interface ICalculateAttenuationFactory
     {
-        ICalculateAttenuation GetCalculator(string CalculationType);
+        ICalculateAttenuation GetCalculator(IAttenuationStrategy CalculationType);
 
     }
 
     public class CalculateAttenuationFactory : ICalculateAttenuationFactory
     {
-        public ICalculateAttenuation GetCalculator(string CalculationType)
+        public ICalculateAttenuation GetCalculator(IAttenuationStrategy CalculationType)
         {
-            if(CalculationType == "Real")
-            {
-                return new RealAttenuationCalculation();
-            }
-            else if(CalculationType == "Apparent")
-            {
-                return new ApparentAttenuationCalculation();
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("Only Real or Apparent are valid attenuation values.");
-            }
+            ICalculateAttenuation attenuation = new AttenuationCalculation();
+            attenuation.AttenuationCalculationStrategy = CalculationType;
+            return attenuation;
+        }
+    }
+
+    public interface IAttenuationStrategy
+    {
+        double CalculateAttenuation(ICalculateAttenuation attenuationDetails);
+    }
+    public class ApparentAttenuationStrategy : IAttenuationStrategy
+    {
+        public double CalculateAttenuation(ICalculateAttenuation attenuationDetails)
+        {
+            if (attenuationDetails.StartingGravity == 1)
+                throw new ArgumentOutOfRangeException("StartingGravity", 1, "1 is not a valid value for StartingGravity");
+            return 100 * ((attenuationDetails.StartingGravity - attenuationDetails.EndingGravity) / (attenuationDetails.StartingGravity - 1));
+        }
+    }
+    public class RealAttenuationStrategy : IAttenuationStrategy
+    {
+        public double CalculateAttenuation(ICalculateAttenuation attenuationDetails)
+        {
+            if (attenuationDetails.StartingGravity == 1)
+                throw new ArgumentOutOfRangeException("StartingGravity", 1, "1 is not a valid value for StartingGravity");
+            return (double)0.1808 * attenuationDetails.StartingGravity + (double)0.8192 * (100 * ((attenuationDetails.StartingGravity - attenuationDetails.EndingGravity) / (attenuationDetails.StartingGravity - 1)));
         }
     }
 
@@ -36,11 +50,16 @@ namespace AttenuationCalculation
     {
         double StartingGravity { get; set; }
         double EndingGravity { get; set; }
-        
+
+        IAttenuationStrategy AttenuationCalculationStrategy { get; set; }
+
+        double Calculate();
+
+
     }
-    public class ApparentAttenuationCalculation : Calculator, ICalculateAttenuation
+    public class AttenuationCalculation : Calculator, ICalculateAttenuation
     {
-        public ApparentAttenuationCalculation() : base(CalculatableTypes.Percentage)
+        public AttenuationCalculation() : base(CalculatableTypes.Percentage)
         {
 
         }
@@ -56,30 +75,8 @@ namespace AttenuationCalculation
 
         public override double Calculate()
         {
-            if (this.StartingGravity == 1)
-                throw new ArgumentOutOfRangeException("StartingGravity", 1, "1 is not a valid value for StartingGravity");
-             return 100 * ((this.StartingGravity - this.EndingGravity) / (this.StartingGravity - 1));
+            return this.AttenuationCalculationStrategy.CalculateAttenuation(this);
         }
-    }
-
-    public class RealAttenuationCalculation : Calculator,  ICalculateAttenuation
-    {
-        public double EndingGravity
-        {
-            get; set;
-        }
-
-        public double StartingGravity
-        {
-            get; set;
-        }
-
-        public override double Calculate()
-        {
-            if (this.StartingGravity == 1)
-                throw new ArgumentOutOfRangeException("StartingGravity", 1, "1 is not a valid value for StartingGravity");
-            return (double)0.1808 * this.StartingGravity + (double)0.8192 * (100 * ((this.StartingGravity - this.EndingGravity) / (this.StartingGravity - 1)));
-
-        }
+        public IAttenuationStrategy AttenuationCalculationStrategy { get; set; }
     }
 }

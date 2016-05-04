@@ -26,7 +26,12 @@ namespace Core
             }
         }
 
-        public abstract double Calculate();
+        public virtual double Calculate()
+        {
+            return 0;
+        }
+
+        //    public abstract double Calculate();
     }
 
     public interface ICalculate

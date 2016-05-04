@@ -12,10 +12,10 @@ namespace AlcoholCalculationTests
         public void ABVCalculation_Passes()
         {
             ICalculateAlcoholFactory calculatorFactory = new CalculateAlcoholFactory();
-            ICalculateAlcohol calculator = calculatorFactory.GetCalculator("ABV");
+            ICalculateAlcohol calculator = calculatorFactory.GetCalculator(new AlcoholByVolumeStrategy());
             calculator.StartingGravity = 1.05;
             calculator.EndingGravity = 1.01;
-            var abvAlcohol = (calculator as Calculator).Calculate();
+            var abvAlcohol = calculator.Calculate();
             Assert.AreEqual(5.26381752099261, abvAlcohol);
         }
         [TestMethod]
@@ -23,10 +23,10 @@ namespace AlcoholCalculationTests
         {
             {
                 ICalculateAlcoholFactory calculatorFactory = new CalculateAlcoholFactory();
-                ICalculateAlcohol calculator = calculatorFactory.GetCalculator("ABW");
+                ICalculateAlcohol calculator = calculatorFactory.GetCalculator(new AlcoholByWeightStrategy());
                 calculator.StartingGravity = 1.05;
                 calculator.EndingGravity = 1.01;
-                var abwAlcohol = (calculator as Calculator).Calculate();
+                var abwAlcohol = calculator.Calculate();
                 Assert.AreEqual(4.1761022684546969, abwAlcohol);
             }
         }
@@ -36,10 +36,10 @@ namespace AlcoholCalculationTests
             try
             {
                 ICalculateAlcoholFactory calculatorFactory = new CalculateAlcoholFactory();
-                ICalculateAlcohol calculator = calculatorFactory.GetCalculator("garbage");
+                ICalculateAlcohol calculator = calculatorFactory.GetCalculator(null);
                 calculator.StartingGravity = 1.05;
                 calculator.EndingGravity = 1.01;
-                var alcoholCalculator = (calculator as Calculator).Calculate();
+                var alcoholCalculator = calculator.Calculate();
             }
             catch (Exception ex)
             {
