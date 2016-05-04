@@ -11,14 +11,14 @@ namespace CarbonationCalculation
 
     public class CalculateCarbonationFactory : ICalculateCarbonationFactory
     {
-        public ICalculateCarbonation GetCalculator(string CalculationType)
+        public ICalculateCarbonation GetCalculator(ICarbonationStrategy carbonationType)
         {
             return new CarbonationCalculation();
         }
     }
     public interface ICalculateCarbonationFactory
     {
-        ICalculateCarbonation GetCalculator(string CalculationType);
+        ICalculateCarbonation GetCalculator(ICarbonationStrategy carbonationType);
     }
 
 
@@ -67,6 +67,8 @@ namespace CarbonationCalculation
         double DesiredCarbonationInVolumes { get; set; }
         
         void SetCarbonationType(ICarbonationStrategy carbonationStrategy);
+
+        double Calculate();
     }
 
     public class CarbonationCalculation : Calculator, ICalculateCarbonation

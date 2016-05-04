@@ -13,14 +13,26 @@ namespace BeerBrewingApi.Models
     public class AlcoholModel
     {
         /// <summary>
-        /// Pre-Fermentation Original Gravity
+        /// Pre-Fermentation Original Gravity.  Usually in range of 1.00 to 1.20
         /// </summary>
         [Required]
         public double StartingGravity { get; set; }
         [Required]
+        /// <summary>
+        /// Post-Fermentation Gravity.  Usually in range of 1.00 to 1.20.  Always less than original gravity. 
+        /// </summary>
         public double EndingGravity { get; set; }
+        /// <summary>
+        /// As a percentage.  ex. 5% 
+        /// </summary>
         public double AlcoholByVolume { get; set; }
+        /// <summary>
+        /// As a percentage.  ex. 5% 
+        /// </summary>
         public double AlcoholByWeight { get; set; }
+        /// <summary>
+        /// Degrees Fahrenheit.   
+        /// </summary>
         public double TemperatureFahrenheit { get; set; }
     }
 }

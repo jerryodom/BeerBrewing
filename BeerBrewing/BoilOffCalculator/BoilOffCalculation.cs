@@ -9,23 +9,44 @@ namespace BoilOffCalculaton
 {
     public interface ICalculateBoilOffFactory
     {
-        ICalculateBoilOff GetCalculator(string CalculationType);
+        ICalculateBoilOff GetCalculator(IBoilOffStrategy boilOffStrategy);
 
     }
 
     public class CalculateBoilOffFactory : ICalculateBoilOffFactory
     {
-        public ICalculateBoilOff GetCalculator(string CalculationType)
+        public ICalculateBoilOff GetCalculator(IBoilOffStrategy boilOffStrategy)
         {
-            return new BoilOffByVolumeCalculation();
+            ICalculateBoilOff boilOff = new BoilOffByVolumeCalculation();
+            boilOff.BoilOffStrategy = boilOffStrategy;
+            return boilOff;
         }
     }
+
+    public interface IBoilOffStrategy
+    {
+        double CalculateBoilOff(ICalculateBoilOff boiloffDetails);
+    }
+
+    public class BoilOffStrategy : IBoilOffStrategy
+    {
+        public double CalculateBoilOff(ICalculateBoilOff boiloffDetails)
+        {
+            return (boiloffDetails.StartingVolumeInGallons * (boiloffDetails.EvaporationRateInPercent / 100)) * (boiloffDetails.BoilTimeInMinutes / 60);
+        }
+    }
+
+
 
     public interface ICalculateBoilOff
     {
         double BoilTimeInMinutes { get; set; }
         double StartingVolumeInGallons { get; set; }
         double EvaporationRateInPercent { get; set; }
+
+        double Calculate();
+
+        IBoilOffStrategy BoilOffStrategy { get; set; }
 
     }
     public class BoilOffByVolumeCalculation : Calculator, ICalculateBoilOff
@@ -49,9 +70,14 @@ namespace BoilOffCalculaton
             get; set;
         }
 
+        public IBoilOffStrategy BoilOffStrategy
+        {
+            get; set;
+        }
+
         public override double Calculate()
         {
-            return (this.StartingVolumeInGallons * (this.EvaporationRateInPercent / 100)) * (this.BoilTimeInMinutes / 60);
+            return this.BoilOffStrategy.CalculateBoilOff(this);
         }
 
     }
