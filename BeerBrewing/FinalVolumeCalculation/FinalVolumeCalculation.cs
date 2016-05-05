@@ -9,15 +9,46 @@ namespace FinalVolumeCalculation
 {
     public interface ICalculateBoilOffFactory
     {
-        ICalculateFinalVolume GetCalculator(string CalculationType);
+        ICalculateFinalVolume GetCalculator(IFinalVolumeStrategy CalculationType);
     }
     public class CalculateBoilOffFactory : ICalculateBoilOffFactory
     {
-        public ICalculateFinalVolume GetCalculator(string CalculationType)
+        public ICalculateFinalVolume GetCalculator(IFinalVolumeStrategy CalculationType)
         {
-            return new FinalVolumeCalculation();
+            ICalculateFinalVolume calculator = new FinalVolumeCalculation();
+            calculator.FinalVolumeStrategy = CalculationType;
+            return calculator;
+
         }
     }
+
+    public interface IFinalVolumeStrategy
+    {
+        double CalculateFinalVolume(ICalculateFinalVolume finalVolumeDetails);
+    }
+
+    public class FinalVolumeStrategy : IFinalVolumeStrategy
+    {
+        public double CalculateFinalVolume(ICalculateFinalVolume finalVolumeDetails)
+        {
+            var valueForReturn = finalVolumeDetails.StartingVolumeInGallons - finalVolumeDetails.BoilOffInGallons - finalVolumeDetails.LossFromCoolingShrinkageInGallons;
+            if (finalVolumeDetails.OtherValuesToSubtractFromStartingVolume != null && finalVolumeDetails.OtherValuesToSubtractFromStartingVolume.Count != 0)
+            {
+                foreach (var valueToSubtract in finalVolumeDetails.OtherValuesToSubtractFromStartingVolume)
+                {
+                    valueForReturn -= valueToSubtract;
+                }
+            }
+            if (valueForReturn < 0)
+            {
+                throw new ArgumentOutOfRangeException("StartingVolumeInGallons", "Your starting volume is less than your combined boil off, loss from shrinkage and other values.  Can't have a negative final volume");
+            }
+            return valueForReturn;
+
+        }
+    }
+
+
 
     public class FinalVolumeCalculation : Calculator, ICalculateFinalVolume
     {
@@ -47,20 +78,9 @@ namespace FinalVolumeCalculation
 
         public override double Calculate()
         {
-            var valueForReturn = StartingVolumeInGallons - BoilOffInGallons - LossFromCoolingShrinkageInGallons;
-            if(OtherValuesToSubtractFromStartingVolume != null && OtherValuesToSubtractFromStartingVolume.Count != 0)
-            {
-                foreach(var valueToSubtract in OtherValuesToSubtractFromStartingVolume)
-                {
-                    valueForReturn -= valueToSubtract;
-                }
-            }
-            if(valueForReturn < 0)
-            {
-                throw new ArgumentOutOfRangeException("StartingVolumeInGallons", "Your starting volume is less than your combined boil off, loss from shrinkage and other values.  Can't have a negative final volume");
-            }
-            return valueForReturn;
+            return this.FinalVolumeStrategy.CalculateFinalVolume(this);
         }
+        public IFinalVolumeStrategy FinalVolumeStrategy { get; set; }
     }
 
     public interface ICalculateFinalVolume
@@ -73,5 +93,6 @@ namespace FinalVolumeCalculation
 
         List<double> OtherValuesToSubtractFromStartingVolume { get; set; }
         double Calculate();
+        public IFinalVolumeStrategy FinalVolumeStrategy { get; set; }
     }
 }
