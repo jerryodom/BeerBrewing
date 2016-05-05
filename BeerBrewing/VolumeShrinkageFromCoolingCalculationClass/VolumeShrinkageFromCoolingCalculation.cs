@@ -9,20 +9,33 @@ namespace VolumeShrinkageFromCoolingCalculation
 {
     public interface ICalculateVolumeShrinkageFromCoolingFactory
     {
-        ICalculateVolumeShrinkageFromCooling GetCalculator(string CalculationType);
+        ICalculateVolumeShrinkageFromCooling GetCalculator(IVolumeShrinkageFromCoolingStrategy CalculationType);
 
     }
 
     public class CalculateVolumeShrinkageFromCoolingFactory : ICalculateVolumeShrinkageFromCoolingFactory
     {
-        public ICalculateVolumeShrinkageFromCooling GetCalculator(string CalculationType)
+        public ICalculateVolumeShrinkageFromCooling GetCalculator(IVolumeShrinkageFromCoolingStrategy CalculationType)
         {
-            return new VolumeShrinkageFromCoolingCalculation();
+            ICalculateVolumeShrinkageFromCooling calculator = new VolumeShrinkageFromCoolingCalculation();
+            calculator.CalculationType = CalculationType;
+            return calculator;
         }
+    }
+
+    public interface IVolumeShrinkageFromCoolingStrategy
+    {
+        double CalculateVolumeShrinkageFromCooling(ICalculateVolumeShrinkageFromCooling volumeDetails);
     }
     public class VolumeShrinkageFromCoolingCalculation : Calculator, ICalculateVolumeShrinkageFromCooling
     {
         public VolumeShrinkageFromCoolingCalculation() : base(CalculatableTypes.USGallons) { }
+
+        public IVolumeShrinkageFromCoolingStrategy CalculationType
+        {
+            get; set;
+        }
+
         public double CoolingLossInPercent
         {
             get; set;
@@ -52,6 +65,9 @@ namespace VolumeShrinkageFromCoolingCalculation
         double VolumeAfterBoilOff { get; set; }
         double StartingVolumeInGallons { get; set; }
         double CoolingLossInPercent { get; set; }
+        IVolumeShrinkageFromCoolingStrategy CalculationType { get; set; }
+
+        double Calculate();
 
     }
 }

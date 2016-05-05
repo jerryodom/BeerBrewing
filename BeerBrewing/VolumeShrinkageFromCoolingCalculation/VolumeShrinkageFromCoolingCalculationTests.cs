@@ -13,11 +13,11 @@ namespace VolumeShrinkageFromCoolingCalculation
         {
 
             ICalculateBoilOffFactory boilCalculatorFactory = new CalculateBoilOffFactory();
-            ICalculateBoilOff boilCalculator = boilCalculatorFactory.GetCalculator(null);
+            ICalculateBoilOff boilCalculator = boilCalculatorFactory.GetCalculator(new BoilOffStrategy());
             boilCalculator.BoilTimeInMinutes = 60;
             boilCalculator.StartingVolumeInGallons = 5;
             boilCalculator.EvaporationRateInPercent = 4;
-            var boiledOffVolumeInGalls = (boilCalculator as Calculator).Calculate();
+            var boiledOffVolumeInGalls = boilCalculator.Calculate();
             Assert.AreEqual(0.2, boiledOffVolumeInGalls);
 
             ICalculateVolumeShrinkageFromCoolingFactory calculatorFactory = new CalculateVolumeShrinkageFromCoolingFactory();
@@ -25,7 +25,7 @@ namespace VolumeShrinkageFromCoolingCalculation
             calculator.VolumeAfterBoilOff =  5 - boiledOffVolumeInGalls;
             calculator.StartingVolumeInGallons = 5;
             calculator.CoolingLossInPercent = 4;
-            var shrinkageFromCoolingInGals = (calculator as Calculator).Calculate();
+            var shrinkageFromCoolingInGals = calculator.Calculate();
             Assert.AreEqual(0.192, shrinkageFromCoolingInGals);
         }
     }

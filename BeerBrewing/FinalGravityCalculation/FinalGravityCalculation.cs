@@ -25,6 +25,7 @@ namespace FinalGravityCalculation
         double OriginalGravity { get; set; }
         double StartingVolume { get; set; }
         double FinalVolume { get; set; }
+        double Calculate();
     }
     public class FinalGravityCalculation : Calculator, ICalculateFinalGravity
     {

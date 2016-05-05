@@ -9,15 +9,17 @@ namespace IbuCalculation
 {
     public interface ICalculateIbuFactory
     {
-        ICalculateIbu GetCalculator();
+        ICalculateIbu GetCalculator(IIbuStrategy ibuStrategy);
 
     }
 
     public class CalculateIbuFactory : ICalculateIbuFactory
     {
-        public ICalculateIbu GetCalculator()
+        public ICalculateIbu GetCalculator(IIbuStrategy ibuStrategy)
         {
-            return new IbuCalculation();
+            ICalculateIbu myCalculator = new IbuCalculation();
+            myCalculator.IbuCalculationType = ibuStrategy;
+            return myCalculator;
         }
     }
 
@@ -78,6 +80,7 @@ namespace IbuCalculation
         IIbuStrategy IbuCalculationType { get; set; }
 
         void SetIbuType(IIbuStrategy ibuStrategy);
+        double Calculate();
     }
     public class IbuCalculation : Calculator, ICalculateIbu
     {

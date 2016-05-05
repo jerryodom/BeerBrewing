@@ -72,5 +72,6 @@ namespace FinalVolumeCalculation
         double LossFromCoolingShrinkageInGallons { get; set; }
 
         List<double> OtherValuesToSubtractFromStartingVolume { get; set; }
+        double Calculate();
     }
 }
