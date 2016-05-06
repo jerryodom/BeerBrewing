@@ -12,7 +12,7 @@ namespace WaterNeededExtractCalculationTests
         public void WaterNeededExtractCalculation_Passes()
         {
             ICalculateWaterNeededExtractFactory waterNeededFactory = new CalculateWaterNeededExtractFactory();
-            ICalculateWaterNeededExtract waterNeededExtractCalculator = waterNeededFactory.GetCalculator(null);
+            ICalculateWaterNeededExtract waterNeededExtractCalculator = waterNeededFactory.GetCalculator(new CalculateWaterNeededExtractStrategy());
             waterNeededExtractCalculator.BoilTimeInMinutes = 60;
             waterNeededExtractCalculator.DesiredFinalVolumeInGallons = 6;
             waterNeededExtractCalculator.EvaporationRatePercent = 12.79;
@@ -20,7 +20,7 @@ namespace WaterNeededExtractCalculationTests
             waterNeededExtractCalculator.MashWaterVolumeInQuarts = 16;
             waterNeededExtractCalculator.TopUpWaterInGallons = 0;
             waterNeededExtractCalculator.GetCoolingLossInGallons();
-            var totalWaterNeeded = (waterNeededExtractCalculator as Calculator).Calculate();
+            var totalWaterNeeded = waterNeededExtractCalculator.Calculate();
             Assert.AreEqual(7.72, totalWaterNeeded);
 
         }

@@ -9,17 +9,38 @@ namespace WaterNeededExtractCalculation
 {
     public interface ICalculateWaterNeededExtractFactory
     {
-        ICalculateWaterNeededExtract GetCalculator(string CalculationType);
+        ICalculateWaterNeededExtract GetCalculator(ICalculateWaterNeededExtractStrategy CalculationType);
 
     }
 
     public class CalculateWaterNeededExtractFactory : ICalculateWaterNeededExtractFactory
     {
-        public ICalculateWaterNeededExtract GetCalculator(string CalculationType)
+        public ICalculateWaterNeededExtract GetCalculator(ICalculateWaterNeededExtractStrategy CalculationType)
         {
             return new WaterNeededExtractCalculation();
         }
     }
+
+    public interface ICalculateWaterNeededExtractStrategy
+    {
+        double CalculateWaterNeededExtract(ICalculateWaterNeededExtract extractData);
+    }
+    public class CalculateWaterNeededExtractStrategy : ICalculateWaterNeededExtractStrategy
+    {
+        public double CalculateWaterNeededExtract(ICalculateWaterNeededExtract extractData)
+        {
+            double ltt = extractData.LossToTrubInGallons;
+            double tup = extractData.TopUpWaterInGallons;
+            double dfv = extractData.DesiredFinalVolumeInGallons;
+            double coolingLoss = extractData.GetCoolingLossInGallons();
+            double X1 = (dfv - tup + ltt) * (extractData.EvaporationRatePercent / 100) * ((double)extractData.BoilTimeInMinutes / 60);
+            double X2 = (X1 + coolingLoss) + (((X1 + coolingLoss) * (extractData.EvaporationRatePercent / 100) * (double)extractData.BoilTimeInMinutes / 60));
+            double totalWaterNeeded = dfv + X2 + ltt;
+
+            return Math.Round(totalWaterNeeded, 2);
+        }
+    }
+
 
     public interface ICalculateWaterNeededExtract
     {
@@ -42,10 +63,16 @@ namespace WaterNeededExtractCalculation
         double GetBoilVolumeInGallons();
 
         double GetCoolingLossInGallons();
+
+
+        ICalculateWaterNeededExtract WaterNeededExtractStrategy { get; set; }
+        double Calculate();
     }
 
     public class WaterNeededExtractCalculation : Calculator, ICalculateWaterNeededExtract
     {
+        public   ICalculateWaterNeededExtract WaterNeededExtractStrategy
+        { get; set; }
         public WaterNeededExtractCalculation() : base(CalculatableTypes.USGallons) { }
 
         public double GetBoiledOffVolumeInGallons()
