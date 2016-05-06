@@ -18,11 +18,18 @@ namespace VolumeShrinkageFromCoolingCalculation
         public ICalculateVolumeShrinkageFromCooling GetCalculator(IVolumeShrinkageFromCoolingStrategy CalculationType)
         {
             ICalculateVolumeShrinkageFromCooling calculator = new VolumeShrinkageFromCoolingCalculation();
-            calculator.CalculationType = CalculationType;
+            calculator.VolumeShrinkageFromCoolingStrategy = CalculationType;
             return calculator;
         }
     }
 
+    public class VolumeShrinkageFromCoolingStrategy : IVolumeShrinkageFromCoolingStrategy
+    {
+        public double CalculateVolumeShrinkageFromCooling(ICalculateVolumeShrinkageFromCooling volumeDetails)
+        {
+            return volumeDetails.VolumeAfterBoilOff * volumeDetails.CoolingLossInPercent / 100;
+        }
+    }
     public interface IVolumeShrinkageFromCoolingStrategy
     {
         double CalculateVolumeShrinkageFromCooling(ICalculateVolumeShrinkageFromCooling volumeDetails);
@@ -31,7 +38,7 @@ namespace VolumeShrinkageFromCoolingCalculation
     {
         public VolumeShrinkageFromCoolingCalculation() : base(CalculatableTypes.USGallons) { }
 
-        public IVolumeShrinkageFromCoolingStrategy CalculationType
+        public IVolumeShrinkageFromCoolingStrategy VolumeShrinkageFromCoolingStrategy
         {
             get; set;
         }
@@ -53,7 +60,7 @@ namespace VolumeShrinkageFromCoolingCalculation
 
         public override double Calculate()
         {
-            return VolumeAfterBoilOff * CoolingLossInPercent / 100;
+            return VolumeShrinkageFromCoolingStrategy.CalculateVolumeShrinkageFromCooling(this);
         }
     }
 
@@ -65,7 +72,7 @@ namespace VolumeShrinkageFromCoolingCalculation
         double VolumeAfterBoilOff { get; set; }
         double StartingVolumeInGallons { get; set; }
         double CoolingLossInPercent { get; set; }
-        IVolumeShrinkageFromCoolingStrategy CalculationType { get; set; }
+        IVolumeShrinkageFromCoolingStrategy VolumeShrinkageFromCoolingStrategy { get; set; }
 
         double Calculate();
 

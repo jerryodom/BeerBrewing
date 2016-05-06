@@ -21,7 +21,7 @@ namespace VolumeShrinkageFromCoolingCalculation
             Assert.AreEqual(0.2, boiledOffVolumeInGalls);
 
             ICalculateVolumeShrinkageFromCoolingFactory calculatorFactory = new CalculateVolumeShrinkageFromCoolingFactory();
-            ICalculateVolumeShrinkageFromCooling calculator = calculatorFactory.GetCalculator(null);
+            ICalculateVolumeShrinkageFromCooling calculator = calculatorFactory.GetCalculator(new VolumeShrinkageFromCoolingStrategy());
             calculator.VolumeAfterBoilOff =  5 - boiledOffVolumeInGalls;
             calculator.StartingVolumeInGallons = 5;
             calculator.CoolingLossInPercent = 4;
