@@ -20,6 +20,7 @@ using BeerBrewingApi.Results;
 namespace BeerBrewingApi.Controllers
 {
     [Authorize]
+    [System.Web.Http.Description.ApiExplorerSettings(IgnoreApi =true)]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {

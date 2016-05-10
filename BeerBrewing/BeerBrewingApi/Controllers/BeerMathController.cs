@@ -9,10 +9,18 @@ using Core;
 using AlcoholCalculation;
 namespace BeerBrewingApi.Controllers
 {
+    [RoutePrefix("api/brewing")]
     public class BeerMathController : ApiController
     {
-        [Route("alcohol/{startingGravity}/{endingGravity}/{temperatureFahrenheit}")]
-        public AlcoholModel GetAlcohol(double startingGravity, double endingGravity, double temperatureFahrenheit)
+        /// <summary>
+        /// Calculate alcohol by volume given starting and ending gravity.
+        /// </summary>
+        /// <param name="startingGravity">Starting Gravity in Original Gravity.  Ex:  1.051</param>
+        /// <param name="endingGravity">Final Gravity in Original Gravity.  Ex:  1.011</param>
+        /// <param name="temperatureFahrenheit">Temperature in Fahrenheit at Final Gravity reading.  Ex:  72F</param>
+        /// <returns></returns>
+        [Route("alcoholbyvolume/{startingGravity:double}/{endingGravity:double}/{temperatureFahrenheit:double}")]
+        public AlcoholModel GetAlcoholByVolume(double startingGravity, double endingGravity, double temperatureFahrenheit)
         {
             ICalculateAlcoholFactory alcoholFactory = new CalculateAlcoholFactory();
             var alcoholCalculator = alcoholFactory.GetCalculator(new AlcoholByVolumeStrategy());
