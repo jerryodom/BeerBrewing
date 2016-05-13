@@ -93,6 +93,6 @@ namespace FinalVolumeCalculation
 
         List<double> OtherValuesToSubtractFromStartingVolume { get; set; }
         double Calculate();
-        public IFinalVolumeStrategy FinalVolumeStrategy { get; set; }
+        IFinalVolumeStrategy FinalVolumeStrategy { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace FinalGravityCalculation
             if (finalGravityDetails.FinalVolume <= 0)
                 throw new ArgumentOutOfRangeException("FinalVolume", "Final Volume must be greater than zero");
             if (finalGravityDetails.StartingVolume <= 0)
-                finalGravityDetails new ArgumentOutOfRangeException("StartingVolume", "Starting Volume must be greater than zero");
+                throw new ArgumentOutOfRangeException("StartingVolume", "Starting Volume must be greater than zero");
             var finalGravity = 1 + (finalGravityDetails.StartingVolume * (System.Math.Abs(1 - finalGravityDetails.OriginalGravity) * 1000) / finalGravityDetails.FinalVolume / 1000);
             return finalGravity;
 
