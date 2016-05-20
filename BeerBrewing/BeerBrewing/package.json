@@ -1,14 +1,14 @@
 {
   "name": "beer-brewing",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "description": "BeerBrewing",
   "author": {
-    "name": "jodom",
-    "email": ""
+    "name": "Wayne Odom",
+    "email": "jerry@jerryodom.com"
   },
   "dependencies": {
     "express": "~4.9.0",
