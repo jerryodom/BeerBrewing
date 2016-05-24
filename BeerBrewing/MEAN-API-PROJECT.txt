@@ -3,3 +3,4 @@ Build a RESTful API Server using Node.js and Express have it write beer recipes 
 https://devcenter.heroku.com/articles/mean-apps-restful-api
 https://www.sitepoint.com/user-authentication-mean-stack/
 https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
+https://isolasoftware.it/2012/05/28/call-rest-api-with-node-js/
