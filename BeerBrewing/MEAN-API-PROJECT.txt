@@ -12,8 +12,12 @@ JSON Web Tokens:
 https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
 Stormpath gives us a free developer version with quick tools to get started.
 https://stormpath.com/blog/build-nodejs-express-stormpath-app
+https://www.sitepoint.com/using-json-web-tokens-node-js/
 
 
 Step 3:  Have it write data to a MongoDB server to experiment with MongoDB.  This may get mixed in with the security piece if you develop it yourself rather than use an online provider.
 
 Step 4:  Build some minor frontend in Angularjs, Ember, Ionic or ECMAscript.  Possibly Aurelia if that's continued to grow around here. 
+
+Additional Notes:
+A list of packages you'll probably need to bring in.  http://blog.apcelent.com/why-use-nodejs-tutorial.html
