@@ -1,6 +1,19 @@
-Build a RESTful API Server using Node.js and Express have it write beer recipes to a MongoDB server to experiment with MongoDB. 
-  Maybe build an Angular app later although we are more concerned with consuming from Mobile so that may vary.
+This document is a reference to remind me what I was doing.  Put a few URLS in place in regards to interesting articles.
+
+Step 1:  done
+Build a RESTful API Server using Node.js / Express 
 https://devcenter.heroku.com/articles/mean-apps-restful-api
 https://www.sitepoint.com/user-authentication-mean-stack/
 https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 https://isolasoftware.it/2012/05/28/call-rest-api-with-node-js/
+
+Step 2: Built basic service now need to add security/identity
+JSON Web Tokens:
+https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+Stormpath gives us a free developer version with quick tools to get started.
+https://stormpath.com/blog/build-nodejs-express-stormpath-app
+
+
+Step 3:  Have it write data to a MongoDB server to experiment with MongoDB.  This may get mixed in with the security piece if you develop it yourself rather than use an online provider.
+
+Step 4:  Build some minor frontend in Angularjs, Ember, Ionic or ECMAscript.  Possibly Aurelia if that's continued to grow around here. 
