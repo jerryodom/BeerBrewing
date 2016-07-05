@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{4F797745-1F32-4D47-BA2D-9487E21D4748}"
 EndProject
@@ -87,6 +87,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.CalculatedTypeInterpre
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{BEFD7195-738F-48EE-8841-0B579F55D5EA}"
 	ProjectSection(SolutionItems) = preProject
+		current-dependencies.txt = current-dependencies.txt
 		MEAN-API-PROJECT.txt = MEAN-API-PROJECT.txt
 	EndProjectSection
 EndProject
