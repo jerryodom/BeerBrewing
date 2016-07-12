@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public abstract class Calculator : ICalculate
+    public abstract class Calculator : ICalculate<double>
     {
         public Calculator()
         {
@@ -34,34 +34,34 @@ namespace Core
         //    public abstract double Calculate();
     }
 
-    public interface ICalculate
+    public interface ICalculate<T>
     {
-        double Calculate();
+        T Calculate();
 
         CalculatableTypes CalculatedType { get; }
     }
 
-  
+    //public static class CalculatableTypes
+    //{
+    //    public static string USGallons = "USGallons";
+    //}
+    public enum CalculatableTypes
+    {
+        USGallons,
+        Quarts,
+        Pints,
+        Milliliters,
+        PSI,
+        Grams,
+        Milligrams,
+        Liters,
+        Ounces,
+        OriginalGravity,
+        Brix,
+        Percentage,
+        IBU,
+        TemperatureFahrenheit
+    }
 }
 
-//public static class CalculatableTypes
-//{
-//    public static string USGallons = "USGallons";
-//}
-public enum CalculatableTypes
-{
-    USGallons,
-    Quarts,
-    Pints,
-    Milliliters,
-    PSI,
-    Grams,
-    Milligrams,
-    Liters, 
-    Ounces,
-    OriginalGravity,
-    Brix,
-    Percentage, 
-    IBU
-}
 
