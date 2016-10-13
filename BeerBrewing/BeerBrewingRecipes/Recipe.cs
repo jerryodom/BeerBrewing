@@ -8,8 +8,9 @@ namespace BrewingRecipes
 {
     public abstract class Recipe
     {
-        public IEnumerable<IFerment> Fermenters { get; set; }
-        public IEnumerable<IBitter> Bittering { get; set; }
-        public IEnumerable<IFermentable> Fermentables { get; set; }
+        public IEnumerable<IIngredient> IngredientsList { get; set; }
+        public IEnumerable<IFerment> Fermenters { get;  }
+        public IEnumerable<IBitter> Bittering { get;  }
+        public IEnumerable<IFermentable> Fermentables { get;  }
     }
 }

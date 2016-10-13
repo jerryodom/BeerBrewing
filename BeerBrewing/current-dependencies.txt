@@ -1,3 +1,4 @@
 For the Node project type in Visual Studio 2015:(BeerBrewing)
 https://www.visualstudio.com/en-us/features/node-js-vs.aspx
-
+Create React App
+https://github.com/facebookincubator/create-react-app

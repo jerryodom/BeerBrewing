@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{472584
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{4CEA9C11-4927-4BE2-9017-0696B1EA65C2}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Documents\Beer-Brewing-Entity-Relationships.vsdx = ..\..\..\..\Documents\Beer-Brewing-Entity-Relationships.vsdx
 		current-dependencies.txt = current-dependencies.txt
 		todo.txt = todo.txt
 	EndProjectSection
