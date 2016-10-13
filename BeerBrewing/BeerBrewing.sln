@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{4F797745-1F32-4D47-BA2D-9487E21D4748}"
+	ProjectSection(SolutionItems) = preProject
+		todo.txt = todo.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCuttingConcerns", "CrossCuttingConcerns", "{A3D7CD4D-E996-49B3-A7B7-73B3C5FD0F97}"
 EndProject
@@ -14,6 +17,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{47258453-96F2-414B-8B04-DAED0883CA71}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{4CEA9C11-4927-4BE2-9017-0696B1EA65C2}"
+	ProjectSection(SolutionItems) = preProject
+		current-dependencies.txt = current-dependencies.txt
+		todo.txt = todo.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttenuationCalculation", "AttenuationCalculation\AttenuationCalculation.csproj", "{F721503D-26A7-485A-9790-25CA6CF6AA50}"
 EndProject
@@ -96,6 +103,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerBrewingApi", "BeerBrewingApi\BeerBrewingApi.csproj", "{8B292C81-79BF-4DE4-A436-F8BF376D93FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerBrewingApi.Tests", "BeerBrewingApi.Tests\BeerBrewingApi.Tests.csproj", "{4B43DF44-C3DC-411A-A6B6-8A3A8ADA50B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewingRecipes", "BeerBrewingRecipes\BrewingRecipes.csproj", "{3469C601-7307-4903-BA13-DA6379D11E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +264,10 @@ Global
 		{4B43DF44-C3DC-411A-A6B6-8A3A8ADA50B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B43DF44-C3DC-411A-A6B6-8A3A8ADA50B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B43DF44-C3DC-411A-A6B6-8A3A8ADA50B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3469C601-7307-4903-BA13-DA6379D11E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3469C601-7307-4903-BA13-DA6379D11E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3469C601-7307-4903-BA13-DA6379D11E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3469C601-7307-4903-BA13-DA6379D11E71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -298,5 +311,6 @@ Global
 		{6E16D313-D080-4F88-99FB-2DB86F63AABD} = {BEFD7195-738F-48EE-8841-0B579F55D5EA}
 		{8B292C81-79BF-4DE4-A436-F8BF376D93FB} = {BEFD7195-738F-48EE-8841-0B579F55D5EA}
 		{4B43DF44-C3DC-411A-A6B6-8A3A8ADA50B5} = {BEFD7195-738F-48EE-8841-0B579F55D5EA}
+		{3469C601-7307-4903-BA13-DA6379D11E71} = {47258453-96F2-414B-8B04-DAED0883CA71}
 	EndGlobalSection
 EndGlobal
