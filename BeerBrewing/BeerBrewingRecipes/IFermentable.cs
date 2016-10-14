@@ -11,5 +11,6 @@ namespace BrewingRecipes
     /// </summary>
     public interface IFermentable
     {
+        double DiastaticPower { get; set; }
     }
 }
