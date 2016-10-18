@@ -9,7 +9,7 @@ namespace BrewingRecipes
     /// <summary>
     /// IFerment - Anything which will cause fermentation.  Yeast, Bacteria primarily.
     /// </summary>
-    public interface IFerment
+    public interface IFerment : IIngredient
     {
     }
 }

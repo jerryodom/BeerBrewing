@@ -37,6 +37,7 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BeerRecipe.cs" />
     <Compile Include="BrewDay.cs" />
     <Compile Include="Brewer.cs" />
     <Compile Include="IBitter.cs" />

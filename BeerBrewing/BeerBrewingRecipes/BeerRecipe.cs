@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BrewingRecipes
 {
-    /// <summary>
-    /// Water Profile Contract
-    /// </summary>
-    public interface IWater : IIngredient
+    public class BeerRecipe : Recipe
     {
+        
     }
 }
