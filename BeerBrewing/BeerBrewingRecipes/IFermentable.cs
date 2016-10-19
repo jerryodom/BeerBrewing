@@ -40,6 +40,11 @@ namespace BrewingRecipes
         {
             return ((this.DiastaticPower - 1) * 1000 * this.Amount) * targetRecipe.TotalEfficiencyPercent / 100;
         }
+
+        public string IngredientDescription()
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

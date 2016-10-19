@@ -37,6 +37,8 @@ namespace BrewingRecipes
 
         double Amount { get; set; }
         double ApplyToRecipe(IRecipe targetRecipe);
+
+        string IngredientDescription();
     }
     
 }

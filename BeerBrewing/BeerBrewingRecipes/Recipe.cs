@@ -31,17 +31,32 @@ namespace BrewingRecipes
 
     public class Recipe : IRecipe
     {
-        public IEnumerable<IIngredient> GetFermenters()
+        public IEnumerable<IFerment> GetFermenters()
         {
-            return ingredientsList.Where(p => (p as IFerment) != null).AsEnumerable();
+            var myFermenter = new List<IFerment>();
+            foreach (var ingredient in ingredientsList.Where(p => (p as IFerment) != null))
+            {
+                myFermenter.Add(ingredient as IFerment);
+            }
+            return myFermenter.AsEnumerable<IFerment>();
         }
-        public IEnumerable<IIngredient> GetBitters()
+        public IEnumerable<IBitter> GetBitters()
         {
-            return ingredientsList.Where(p => (p as IBitter) != null).AsEnumerable();
+            var myBitters = new List<IBitter>();
+            foreach (var ingredient in ingredientsList.Where(p => (p as IBitter) != null))
+            {
+                myBitters.Add(ingredient as IBitter);
+            }
+            return myBitters.AsEnumerable<IBitter>();
         }
-        public IEnumerable<IIngredient> GetFermentables()
+        public IEnumerable<IFermentable> GetFermentables()
         {
-            return ingredientsList.Where(p => (p as IFermentable) != null).AsEnumerable();
+            var myFermentables = new List<IFermentable>();
+            foreach (var ingredient in ingredientsList.Where(p => (p as IFermentable) != null))
+            {
+                myFermentables.Add(ingredient as IFermentable);
+            }
+            return myFermentables.AsEnumerable<IFermentable>();
         }
 
         public double GetEstimatedOriginalGravity()
@@ -56,6 +71,20 @@ namespace BrewingRecipes
                 potentialGravityUnits += (fermentable as IFermentable).ApplyToRecipe(this);
             }
             return 1 + (potentialGravityUnits / this.BatchVolume / 1000);
+        }
+         public double GetEstimatedBitterness()
+        {
+            if (this.BatchVolume == 0)
+            {
+                throw new InvalidOperationException("Can't calculate bitterness when BatchVolume is 0");
+            }
+            double potentialBitternessUnits = 0;
+            foreach (var bitter in this.GetBitters())
+            {
+                potentialBitternessUnits += (bitter as IBitter).ApplyToRecipe(this);
+            }
+            return potentialBitternessUnits;
+
         }
 
         public double TotalEfficiencyPercent { get; set; }
@@ -94,14 +123,16 @@ namespace BrewingRecipes
 
         double GetEstimatedOriginalGravity();
 
+        double GetEstimatedBitterness();
+
         IList<IIngredient> IngredientsList { get; set; }
         
 
-        IEnumerable<IIngredient> GetFermenters();
+        IEnumerable<IFerment> GetFermenters();
 
-        IEnumerable<IIngredient> GetBitters();
+        IEnumerable<IBitter> GetBitters();
 
-        IEnumerable<IIngredient> GetFermentables();
+        IEnumerable<IFermentable> GetFermentables();
 
         IStyle Style { get; set; }
 

@@ -55,7 +55,6 @@ namespace StrikeInfusionCalculation
             //1.918 is the Thermal mass of a converted keg.  ThM = ((Ts-Td)*2.08635*Vw)/(Td-Tm)
             //strikeTempFahrenheit = (((strikeInfusionDetails.TargetStepTemperature * (.3 + (2.08635 * strikeInfusionDetails.WaterToAddInQuarts) + (0.4 * strikeInfusionDetails.WeightOfGrainInPounds))) - (strikeInfusionDetails.InitialMashTemperatureFahrenheit * 0.4 * strikeInfusionDetails.WeightOfGrainInPounds)) - (strikeInfusionDetails.InitialMashTemperatureFahrenheit * .3)) / (2.08635 * strikeInfusionDetails.WeightOfGrainInPounds);
 
-
             return strikeTempFahrenheit;
         }
     }
