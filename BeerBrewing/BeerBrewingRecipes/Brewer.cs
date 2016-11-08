@@ -10,5 +10,6 @@ namespace BrewingRecipes
     public abstract class Brewer
     {
         IEnumerable<BrewDay> BrewDays { get; set; }
-    }
+
+    } 
 }
