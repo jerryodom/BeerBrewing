@@ -3,5 +3,3 @@ RefractometerCorrectionCalculation
 DilutionCalculation
 DecoctionVolume
 BeerWeightToVolume
-
-change
