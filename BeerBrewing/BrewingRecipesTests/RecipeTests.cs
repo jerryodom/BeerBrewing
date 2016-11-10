@@ -77,5 +77,27 @@ namespace BrewingRecipesTests
             //May need to check formula.  BeerSmith usually is a little higher.  BeerSmith has been known to tweak their forumulas though.
             Assert.AreEqual(63.81, Math.Round(ibus, 2));
         }
+
+
+        [TestMethod]
+        public void ApplyFermenterToRecipe()
+        {
+            RecipeFactory myFactory = new RecipeFactory();
+            IRecipe myRecipe = myFactory.GetRecipe(RecipeTypes.Beer);
+            IngredientFactory myIngredientFactory = new IngredientFactory();
+            var ingredient = myIngredientFactory.GetIngredient(IngredientType.Fermentable);
+            ingredient.Amount = 10;
+            (ingredient as IFermentable).DiastaticPower = 1.04;
+            myRecipe.IngredientsList.Add(ingredient);
+            myRecipe.BatchVolume = 6.5;
+            myRecipe.TotalEfficiencyPercent = 70;
+            var og = myRecipe.GetEstimatedOriginalGravity();
+            Assert.AreEqual(myRecipe.GetFermentables().Count(), 1);
+            Assert.AreEqual(Math.Round(og, 3), 1.043);
+            //now add a fermenter to the recipe.  i.e. a yeast with an expected performance
+            //Now get the fg
+            //check fg against expected fg
+
+        }
     }
 }

@@ -23,15 +23,15 @@ namespace BrewingRecipes
             }
             else
             {
-                return new Recipe();
+                throw new ArgumentException("Invalid Recipe Type");
             }
         }
     }
 
 
-    public class Recipe : IRecipe
+    public abstract class Recipe : IRecipe
     {
-        public IEnumerable<IFerment> GetFermenters()
+        public virtual IEnumerable<IFerment> GetFermenters()
         {
             var myFermenter = new List<IFerment>();
             foreach (var ingredient in ingredientsList.Where(p => (p as IFerment) != null))
@@ -40,7 +40,7 @@ namespace BrewingRecipes
             }
             return myFermenter.AsEnumerable<IFerment>();
         }
-        public IEnumerable<IBitter> GetBitters()
+        public virtual IEnumerable<IBitter> GetBitters()
         {
             var myBitters = new List<IBitter>();
             foreach (var ingredient in ingredientsList.Where(p => (p as IBitter) != null))
@@ -49,7 +49,7 @@ namespace BrewingRecipes
             }
             return myBitters.AsEnumerable<IBitter>();
         }
-        public IEnumerable<IFermentable> GetFermentables()
+        public virtual IEnumerable<IFermentable> GetFermentables()
         {
             var myFermentables = new List<IFermentable>();
             foreach (var ingredient in ingredientsList.Where(p => (p as IFermentable) != null))
@@ -59,7 +59,7 @@ namespace BrewingRecipes
             return myFermentables.AsEnumerable<IFermentable>();
         }
 
-        public double GetEstimatedOriginalGravity()
+        public virtual double GetEstimatedOriginalGravity()
         {
             if(this.BatchVolume == 0)
             {
@@ -72,7 +72,7 @@ namespace BrewingRecipes
             }
             return 1 + (potentialGravityUnits / this.BatchVolume / 1000);
         }
-         public double GetEstimatedBitterness()
+         public virtual double GetEstimatedBitterness()
         {
             if (this.BatchVolume == 0)
             {
@@ -111,30 +111,4 @@ namespace BrewingRecipes
         }
     }
 
-    public interface IRecipe
-    {
-        string Name { get; set; }
-
-        double BatchVolume { get; set; }
-        /// <summary>
-        /// Example 70%
-        /// </summary>
-        double TotalEfficiencyPercent { get; set; }
-
-        double GetEstimatedOriginalGravity();
-
-        double GetEstimatedBitterness();
-
-        IList<IIngredient> IngredientsList { get; set; }
-        
-
-        IEnumerable<IFerment> GetFermenters();
-
-        IEnumerable<IBitter> GetBitters();
-
-        IEnumerable<IFermentable> GetFermentables();
-
-        IStyle Style { get; set; }
-
-    }
 }
