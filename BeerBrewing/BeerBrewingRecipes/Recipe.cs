@@ -87,6 +87,18 @@ namespace BrewingRecipes
 
         }
 
+        public double GetEstimatedFinalGravity()
+        {
+            double potentialFinalGravity = 0;
+            var maxValue = this.GetFermenters().Max(p => p.Attenuation);
+            var targetYeast = this.GetFermenters().FirstOrDefault(p => p.Attenuation == maxValue);
+            if(targetYeast != null)
+            {
+                potentialFinalGravity = (targetYeast as IFerment).ApplyToRecipe(this);
+            }
+            return potentialFinalGravity;
+        }
+
         public double TotalEfficiencyPercent { get; set; }
 
         public IStyle Style { get; set; }

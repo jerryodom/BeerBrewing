@@ -18,6 +18,8 @@ namespace BrewingRecipes
 
         double GetEstimatedOriginalGravity();
 
+        double GetEstimatedFinalGravity();
+
         double GetEstimatedBitterness();
 
         IList<IIngredient> IngredientsList { get; set; }

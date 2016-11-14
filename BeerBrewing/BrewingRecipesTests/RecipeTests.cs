@@ -23,6 +23,10 @@ namespace BrewingRecipesTests
         {
             RecipeFactory myFactory = new RecipeFactory();
             IRecipe myRecipe = myFactory.GetRecipe(RecipeTypes.Beer);
+            myRecipe.BatchVolume = 6.5;
+            myRecipe.Name = "My Beer Name";
+            myRecipe.TotalEfficiencyPercent = 70;
+            myRecipe.Style = new Style();
             IngredientFactory myIngredientFactory = new IngredientFactory();
             myRecipe.IngredientsList.Add(myIngredientFactory.GetIngredient(IngredientType.Fermentable));
             myRecipe.BatchVolume = 6.5;
@@ -94,9 +98,12 @@ namespace BrewingRecipesTests
             var og = myRecipe.GetEstimatedOriginalGravity();
             Assert.AreEqual(myRecipe.GetFermentables().Count(), 1);
             Assert.AreEqual(Math.Round(og, 3), 1.043);
-            //now add a fermenter to the recipe.  i.e. a yeast with an expected performance
-            //Now get the fg
-            //check fg against expected fg
+            ingredient = myIngredientFactory.GetIngredient(IngredientType.Fermenter);
+            (ingredient as IFerment).PitchType = FermenterPitchType.Dry;
+            (ingredient as IFerment).Attenuation = 75;
+            myRecipe.IngredientsList.Add(ingredient);
+            var fg = myRecipe.GetEstimatedFinalGravity();
+            Assert.AreEqual(Math.Round(fg, 3), 1.011);
 
         }
     }

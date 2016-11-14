@@ -11,5 +11,16 @@ namespace BrewingRecipes
     /// </summary>
     public interface IFerment : IIngredient
     {
+        double Attenuation { get; set; }
+        FermenterPitchType PitchType { get; set; }
+
     }
+
+    public enum FermenterPitchType
+    {
+        Dry,
+        Liquid,
+        StirPlate
+    }
+
 }

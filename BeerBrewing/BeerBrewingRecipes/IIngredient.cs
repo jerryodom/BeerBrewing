@@ -25,6 +25,8 @@ namespace BrewingRecipes
                     return new Fermentable();
                 case IngredientType.BitterSeason:
                     return new Hops();
+                case IngredientType.Fermenter:
+                    return new Yeast();
                 default:
                     throw new NotImplementedException("need to finish implementing ingredients");
             }
