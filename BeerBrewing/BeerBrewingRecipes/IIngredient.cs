@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
     public enum IngredientType
     {
@@ -35,6 +35,7 @@ namespace BrewingRecipes
 
     public interface IIngredient
     {
+        int IngredientId { get; set; }
         string Name { get; set; }
 
         double Amount { get; set; }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
     public class Yeast : IFerment
     {
+        public int IngredientId { get; set; }
         public double Amount
         {
             get;set;

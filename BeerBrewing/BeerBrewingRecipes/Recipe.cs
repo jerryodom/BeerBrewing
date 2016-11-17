@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
 
     public enum RecipeTypes
@@ -29,34 +29,35 @@ namespace BrewingRecipes
     }
 
 
-    public abstract class Recipe : IRecipe
+    public class BeerRecipe : IRecipe
     {
-        public virtual IEnumerable<IFerment> GetFermenters()
+        public int RecipeId { get; set; }
+        private ICollection<IFerment> GetFermenters()
         {
             var myFermenter = new List<IFerment>();
             foreach (var ingredient in ingredientsList.Where(p => (p as IFerment) != null))
             {
                 myFermenter.Add(ingredient as IFerment);
             }
-            return myFermenter.AsEnumerable<IFerment>();
+            return myFermenter;
         }
-        public virtual IEnumerable<IBitter> GetBitters()
+        private ICollection<IBitter> GetBitters()
         {
             var myBitters = new List<IBitter>();
             foreach (var ingredient in ingredientsList.Where(p => (p as IBitter) != null))
             {
                 myBitters.Add(ingredient as IBitter);
             }
-            return myBitters.AsEnumerable<IBitter>();
+            return myBitters;
         }
-        public virtual IEnumerable<IFermentable> GetFermentables()
+        private ICollection<IFermentable> GetFermentables()
         {
             var myFermentables = new List<IFermentable>();
             foreach (var ingredient in ingredientsList.Where(p => (p as IFermentable) != null))
             {
                 myFermentables.Add(ingredient as IFermentable);
             }
-            return myFermentables.AsEnumerable<IFermentable>();
+            return myFermentables;
         }
 
         public virtual double GetEstimatedOriginalGravity()
@@ -87,6 +88,28 @@ namespace BrewingRecipes
 
         }
 
+        public ICollection<IFerment> Fermenters
+        {
+            get
+            {
+                return GetFermenters();
+            }
+            set { }
+        }
+        public ICollection<IFermentable> Fermentables {
+            get {
+                return GetFermentables();
+            }
+            set { }
+        }
+        public ICollection<IBitter> Bitters {
+            get {
+                return GetBitters();
+            }
+            set { }
+        }
+    
+
         public double GetEstimatedFinalGravity()
         {
             double potentialFinalGravity = 0;
@@ -107,11 +130,13 @@ namespace BrewingRecipes
         {
             get;set;
         }
+
+        public DateTime BrewDate { get; set; }
         public double BatchVolume { get; set; }
 
         private List<IIngredient> ingredientsList = new List<IIngredient>();
 
-        public IList<IIngredient> IngredientsList
+        public ICollection<IIngredient> Ingredients
         {
             get{
                 return ingredientsList;

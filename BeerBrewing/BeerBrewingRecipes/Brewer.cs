@@ -5,11 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
-    public abstract class Brewer
+    public class Brewer
     {
-        IEnumerable<BrewDay> BrewDays { get; set; }
+        public int BrewerId { get; set; }
+        public string Name { get; set; }
+        private ICollection<IRecipe> _recipes;
+        public ICollection<IRecipe> Recipes
+        {
+            get
+            {
+                return _recipes;
+            }
 
+            set
+            {
+                _recipes = value;
+            }
+        }
     } 
 }

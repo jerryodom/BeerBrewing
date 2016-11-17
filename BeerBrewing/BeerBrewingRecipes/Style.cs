@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
     public class Style : IStyle
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
     public interface IRecipe
     {
@@ -22,15 +22,14 @@ namespace BrewingRecipes
 
         double GetEstimatedBitterness();
 
-        IList<IIngredient> IngredientsList { get; set; }
-
-
-        IEnumerable<IFerment> GetFermenters();
-
-        IEnumerable<IBitter> GetBitters();
-
-        IEnumerable<IFermentable> GetFermentables();
-
+        ICollection<IIngredient> Ingredients { get; set; }
+        ICollection<IFerment> Fermenters { get; set; }
+        ICollection<IFermentable> Fermentables { get; set; }
+        ICollection<IBitter> Bitters { get; set; }
+        
         IStyle Style { get; set; }
+        int RecipeId { get; set; }
+
+        DateTime BrewDate { get; set; }
     }
 }

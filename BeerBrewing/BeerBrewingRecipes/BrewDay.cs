@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
-    class BrewDay
+    public class BrewDay
     {
-        Recipe Recipe { get; set; }
-        Brewer Brewer { get; set; }
+        public int BrewDayId { get; set; }
+        public BeerRecipe Recipe { get; set; }
+        public int RecipeId { get; set; }
+        public Brewer Brewer { get; set; }
+        public int BrewerId { get; set; }
 
     }
 }

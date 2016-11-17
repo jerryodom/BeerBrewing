@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
     /// <summary>
     /// IBitter - Anything added to cause bitterness.  Hops primarily.  Other herbs
@@ -17,6 +17,7 @@ namespace BrewingRecipes
 
     public class Hops : IBitter
     {
+        public int IngredientId { get; set; }
         /// <summary>
         /// Represented in US ounces
         /// </summary>

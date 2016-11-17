@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrewingRecipes
+namespace BrewingRecipes.Domain
 {
     /// <summary>
     /// Anything Fermentable - A sugar, a grain
@@ -16,6 +16,7 @@ namespace BrewingRecipes
 
     public class Fermentable : IFermentable
     {
+        public int IngredientId { get; set; }
         /// <summary>
         /// Will be stored in pounds by default
         /// </summary>
