@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using BrewingRecipes.Domain;
+using BrewingRecipes.EntityFrameworkPersistenceModel;
 
 namespace BrewingRecipes.Data
 {
@@ -18,21 +18,18 @@ namespace BrewingRecipes.Data
         public DbSet<Brewer> Brewer { get; set; }
         //public DbSet<BrewDay> BrewersBrewDays{ get; set;}
         public DbSet<BeerRecipe> BrewingRecipes { get; set; }
-        public DbSet<Hops> Bitters { get; set; }
-        //public DbSet<Yeast> BrewingRecipesYeasts { get; set; }
-        //public DbSet<Fermentable> BrewingRecipesFermentables { get; set; }
+        public DbSet<Bitter> Bitters { get; set; }
+        public DbSet<Fermenter> BrewingRecipesYeasts { get; set; }
+        public DbSet<Fermentable> BrewingRecipesFermentables { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("BrewingRecipes");
             modelBuilder.Entity<Brewer>()
                 .HasKey(p => p.BrewerId);
-            modelBuilder.Entity<BeerRecipe>()
-                .HasKey(p => p.RecipeId);
-            //modelBuilder.Entity<Yeast>().HasKey(p => p.IngredientId);
-            //modelBuilder.Entity<Fermentable>().HasKey(p => p.IngredientId);
-            //modelBuilder.Entity<Hops>().HasKey(p => p.IngredientId).HasEntitySetName("Bitters");
-            //modelBuilder.Entity<BeerRecipe>().HasMany(p => p.Bitters);
+            modelBuilder.Entity<Fermenter>().HasKey(p => p.IngredientId);
+            modelBuilder.Entity<Fermentable>().HasKey(p => p.IngredientId);
+            modelBuilder.Entity<Bitter>().HasKey(p => p.IngredientId);
 
             base.OnModelCreating(modelBuilder);
         }
