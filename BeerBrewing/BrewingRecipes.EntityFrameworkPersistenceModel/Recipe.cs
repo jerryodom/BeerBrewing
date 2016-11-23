@@ -8,6 +8,7 @@ namespace BrewingRecipes.EntityFrameworkPersistenceModel
 {
     public class BeerRecipe
     {
+        public int RecipeId { get; set; }
 
         public ICollection<Fermenter> Fermenters
         {

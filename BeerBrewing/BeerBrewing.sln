@@ -11,6 +11,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCuttingConcerns", "CrossCuttingConcerns", "{A3D7CD4D-E996-49B3-A7B7-73B3C5FD0F97}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{9D56D458-690A-4A16-BC95-737D5D39661A}"
+	ProjectSection(SolutionItems) = preProject
+		readme-dummyproject.txt = readme-dummyproject.txt
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B0F3131D-635A-4F9F-9508-82C71C0104A0}"
 	ProjectSection(SolutionItems) = preProject

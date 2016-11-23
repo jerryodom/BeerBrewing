@@ -258,7 +258,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -293,6 +295,10 @@
     <ProjectReference Include="..\BrewingRecipes.Data\BrewingRecipes.Data.csproj">
       <Project>{4c1c9ae7-a4d3-4c42-9344-0bd73d123517}</Project>
       <Name>BrewingRecipes.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BrewingRecipes.EntityFrameworkPersistenceModel\BrewingRecipes.EntityFrameworkPersistenceModel.csproj">
+      <Project>{61af6410-c971-4a79-b875-c92c61bc6de9}</Project>
+      <Name>BrewingRecipes.EntityFrameworkPersistenceModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

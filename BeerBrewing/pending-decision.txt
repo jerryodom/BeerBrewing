@@ -1,1 +1,5 @@
-1.  Repository for a relational database or store in a document format
+Decided to go with EF.  Just because I've used EF in a number of differenct scenarios and versions over the 
+years all the way back to LINQ to SQL.   So there will be a EF specific project for persisting the objects 
+and then hopefully some clean non-automapper mechanism for populating the actual domain objects.   Why no 
+Automapper?  Because it's always ended up being a ghost in the machine for projects I or others have run. 
+Mystery null exceptions, mystery deployment issues, build server issues.   Just another black box to configure around.
