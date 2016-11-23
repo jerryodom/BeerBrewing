@@ -6,23 +6,15 @@ using System.Threading.Tasks;
 
 namespace BrewingRecipes.EntityFrameworkPersistenceModel
 {
-    public class Fermentable
+    public class FermentableBase
     {
-        public BeerRecipe Recipe { get; set; }
-        public int RecipeId { get; set; }
         public int IngredientId { get; set; }
+        public int BrewerId { get; set; }
 
-
-        public int BaseIngredientId { get; set; }
-
-        public FermentableBase BaseIngredient { get; set; }
+        public Brewer Brewer { get; set; }
         /// <summary>
         /// Will be stored in pounds by default
         /// </summary>
-        public double Amount
-        {
-            get; set;
-        }
         /// <summary>
         /// Will be represented in specific gravity by default
         /// </summary>

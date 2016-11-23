@@ -23,5 +23,9 @@ namespace BrewingRecipes.EntityFrameworkPersistenceModel
                 _recipes = value;
             }
         }
+
+        public ICollection<FermenterBase> BaseYeast { get; set; }
+        public ICollection<FermentableBase> BaseFermentables { get; set; }
+        public ICollection<BitterBase> BaseBitters { get; set; }
     }
 }

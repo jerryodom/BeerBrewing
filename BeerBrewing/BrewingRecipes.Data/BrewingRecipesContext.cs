@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using BrewingRecipes.EntityFrameworkPersistenceModel;
+using System.Data.Entity.ModelConfiguration;
 
 namespace BrewingRecipes.Data
 {
@@ -16,23 +17,101 @@ namespace BrewingRecipes.Data
         }
 
         public DbSet<Brewer> Brewer { get; set; }
-        //public DbSet<BrewDay> BrewersBrewDays{ get; set;}
-        //public DbSet<BeerRecipe> BrewingRecipes { get; set; }
-        //public DbSet<Bitter> Bitters { get; set; }
-        //public DbSet<Fermenter> BrewingRecipesYeasts { get; set; }
-        //public DbSet<Fermentable> BrewingRecipesFermentables { get; set; }
+        //public DbSet<BrewDay> BrewersBrewDays { get; set; }
+        public DbSet<BeerRecipe> BrewingRecipes { get; set; }
+        public DbSet<Bitter> Bitters { get; set; }
+        public DbSet<Fermenter> BrewingRecipesYeasts { get; set; }
+        public DbSet<FermenterBase> BaseBrewingRecipesYeasts { get; set; }
+        public DbSet<Fermentable> BrewingRecipesFermentables { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("BrewingRecipes");
-            modelBuilder.Entity<Brewer>()
-                .HasKey(p => p.BrewerId);
-            modelBuilder.Entity<BeerRecipe>().HasKey(p => p.RecipeId);
-            modelBuilder.Entity<Fermenter>().HasKey(p => p.IngredientId);
-            modelBuilder.Entity<Fermentable>().HasKey(p => p.IngredientId);
-            modelBuilder.Entity<Bitter>().HasKey(p => p.IngredientId);
-
+            modelBuilder.Configurations.Add(new BeerRecipeConfiguration());
+            modelBuilder.Configurations.Add(new FermentableConfiguration());
+            modelBuilder.Configurations.Add(new FermenterConfiguration());
+            modelBuilder.Configurations.Add(new FermenterBaseConfiguration());
+            modelBuilder.Configurations.Add(new BitterConfiguration());
+            modelBuilder.Configurations.Add(new FermentableBaseConfiguration());
+            modelBuilder.Configurations.Add(new BitterBaseConfiguration());
             base.OnModelCreating(modelBuilder);
+        }
+    }
+
+    public class BeerRecipeConfiguration : EntityTypeConfiguration<BeerRecipe>
+    {
+        public BeerRecipeConfiguration()
+        {
+            ToTable("BeerRecipes");
+            HasKey(f => f.RecipeId);
+            Property(r => r.Name).IsRequired().HasMaxLength(100);
+            Property(r => r.BatchVolume).IsRequired();
+            Property(r => r.TotalEfficiencyPercent).IsRequired();
+            HasOptional(p => p.Bitters).WithRequired().WillCascadeOnDelete(true);
+            HasOptional(p => p.Fermentables).WithRequired().WillCascadeOnDelete(true);
+            HasOptional(p => p.Fermenters).WithRequired().WillCascadeOnDelete(true);
+        }
+    }
+    public class BitterConfiguration : EntityTypeConfiguration<Bitter>
+    {
+        public BitterConfiguration()
+        {
+            ToTable("Bitters");
+            HasKey(f => f.IngredientId);
+
+        }
+    }
+    public class FermentableConfiguration : EntityTypeConfiguration<Fermentable>
+    {
+        public FermentableConfiguration()
+        {
+            ToTable("Fermentables");
+            HasKey(f => f.IngredientId);
+
+        }
+    }
+    public class FermenterConfiguration : EntityTypeConfiguration<Fermenter>
+    {
+        public FermenterConfiguration()
+        {
+            ToTable("Fermenters");
+            HasKey(f => f.IngredientId);
+            HasRequired(p => p.BaseIngredient);
+
+
+        }
+    }
+    public class FermenterBaseConfiguration : EntityTypeConfiguration<FermenterBase>
+    {
+        public FermenterBaseConfiguration()
+        {
+            ToTable("FermentersBase");
+            HasKey(f => f.IngredientId);
+            HasRequired(b => b.Brewer).WithMany(z => z.BaseYeast).WillCascadeOnDelete(true);
+
+
+        }
+    }
+    public class FermentableBaseConfiguration : EntityTypeConfiguration<FermentableBase>
+    {
+        public FermentableBaseConfiguration()
+        {
+            ToTable("FermentablesBase");
+            HasKey(f => f.IngredientId);
+            HasRequired(b => b.Brewer).WithMany(z => z.BaseFermentables).WillCascadeOnDelete(true);
+
+
+        }
+    }
+    public class BitterBaseConfiguration : EntityTypeConfiguration<BitterBase>
+    {
+        public BitterBaseConfiguration()
+        {
+            ToTable("BittersBase");
+            HasKey(f => f.IngredientId);
+            HasRequired(b => b.Brewer).WithMany(z => z.BaseBitters).WillCascadeOnDelete(true);
+
+
         }
     }
 }

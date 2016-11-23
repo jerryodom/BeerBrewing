@@ -8,6 +8,9 @@ namespace BrewingRecipes.EntityFrameworkPersistenceModel
 {
 public class Bitter
     {
+
+        public BeerRecipe Recipe { get; set; }
+        public int RecipeId { get; set; }
         public int IngredientId { get; set; }
         /// <summary>
         /// Represented in US ounces
@@ -17,6 +20,9 @@ public class Bitter
             get; set;
         }
 
+        public int BaseIngredientId { get; set; }
+
+        public BitterBase BaseIngredient { get; set; }
         /// <summary>
         /// Time in minutes.  Usually minutes boiled
         /// </summary>

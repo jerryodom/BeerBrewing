@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace BrewingRecipes.EntityFrameworkPersistenceModel
 {
-    public class Fermenter
+
+    public class FermenterBase
     {
-        public BeerRecipe Recipe { get; set; }
-        public int RecipeId { get; set; }
         public int IngredientId { get; set; }
-        public int BaseIngredientId { get; set; }
-        
-        public FermenterBase BaseIngredient { get; set; }
-        public double Amount
-        {
-            get; set;
-        }
+        public int BrewerId { get; set; }
+
+        public Brewer Brewer { get; set; }
 
         public double Attenuation
         {
@@ -28,6 +23,6 @@ namespace BrewingRecipes.EntityFrameworkPersistenceModel
         {
             get; set;
         }
-        
+
     }
 }
