@@ -11,6 +11,7 @@ namespace BrewingRecipes.Domain
     {
         public int BrewerId { get; set; }
         public string Name { get; set; }
+        public string EmailAddress { get; set; }
         private ICollection<IRecipe> _recipes;
         public ICollection<IRecipe> Recipes
         {
