@@ -10,6 +10,7 @@ namespace BrewingRecipes.EntityFrameworkPersistenceModel
     {
         public int BrewerId { get; set; }
         public string Name { get; set; }
+        public string EmailAddress { get; set; }
         private ICollection<BeerRecipe> _recipes;
         public ICollection<BeerRecipe> Recipes
         {
