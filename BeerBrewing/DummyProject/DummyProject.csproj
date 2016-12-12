@@ -288,17 +288,13 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BeerBrewingRecipes\BrewingRecipes.Domain.csproj">
-      <Project>{3469c601-7307-4903-ba13-da6379d11e71}</Project>
+    <ProjectReference Include="..\BrewingRecipes.Domain\BrewingRecipes.Domain.csproj">
+      <Project>{6ba0ed06-7183-4fb2-8984-fc41e04208ae}</Project>
       <Name>BrewingRecipes.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BrewingRecipes.Data\BrewingRecipes.Data.csproj">
-      <Project>{4c1c9ae7-a4d3-4c42-9344-0bd73d123517}</Project>
-      <Name>BrewingRecipes.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BrewingRecipes.EntityFrameworkPersistenceModel\BrewingRecipes.EntityFrameworkPersistenceModel.csproj">
-      <Project>{61af6410-c971-4a79-b875-c92c61bc6de9}</Project>
-      <Name>BrewingRecipes.EntityFrameworkPersistenceModel</Name>
+    <ProjectReference Include="..\BrewingRecipes.Service\BrewingRecipes.Service.csproj">
+      <Project>{eadccb95-ad2f-40f9-bfad-f1f4f15fb92f}</Project>
+      <Name>BrewingRecipes.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

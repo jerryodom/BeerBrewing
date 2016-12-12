@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BrewingRecipes.Data;
+using BrewingRecipes.Service;
+using BrewingRecipes.Domain;
 
 namespace DummyProject.Controllers
 {
     public class HomeController : Controller
     {
-        BrewingRecipesContext dataContext;
+        BrewerService brewService = new BrewerService();
         public ActionResult Index()
         {
-            var myBrewer = new BrewingRecipes.EntityFrameworkPersistenceModel.Brewer();
+
+            var myBrewer = new BrewingRecipes.Domain.Brewer();
             myBrewer.Name = "Wayne";
-            dataContext = new BrewingRecipesContext();
-            dataContext.Brewer.Add(new BrewingRecipes.EntityFrameworkPersistenceModel.Brewer());
-            dataContext.SaveChanges();
+            brewService.Add(myBrewer as IBrewer);
             ViewBag.Title = "Home Page";
 
             return View();

@@ -16,7 +16,7 @@ namespace BrewingRecipes.Data
 
         }
 
-        public DbSet<Brewer> Brewer { get; set; }
+        public DbSet<Brewer> Brewers { get; set; }
         //public DbSet<BrewDay> BrewersBrewDays { get; set; }
         public DbSet<BeerRecipe> BrewingRecipes { get; set; }
         public DbSet<Bitter> Bitters { get; set; }
@@ -27,6 +27,7 @@ namespace BrewingRecipes.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("BrewingRecipes");
+            modelBuilder.Configurations.Add(new BrewerConfiguration());
             modelBuilder.Configurations.Add(new BeerRecipeConfiguration());
             modelBuilder.Configurations.Add(new FermentableConfiguration());
             modelBuilder.Configurations.Add(new FermenterConfiguration());
@@ -52,6 +53,16 @@ namespace BrewingRecipes.Data
             HasOptional(p => p.Fermenters).WithRequired().WillCascadeOnDelete(true);
         }
     }
+
+    public class BrewerConfiguration : EntityTypeConfiguration<Brewer>
+    {
+        public BrewerConfiguration()
+        {
+            ToTable("Brewers");
+            HasKey(b => b.BrewerId);
+        }
+    }
+
     public class BitterConfiguration : EntityTypeConfiguration<Bitter>
     {
         public BitterConfiguration()
@@ -114,4 +125,6 @@ namespace BrewingRecipes.Data
 
         }
     }
+
+  
 }

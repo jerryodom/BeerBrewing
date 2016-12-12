@@ -53,12 +53,6 @@
     <Compile Include="RecipeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BeerBrewingRecipes\BrewingRecipes.Domain.csproj">
-      <Project>{3469c601-7307-4903-ba13-da6379d11e71}</Project>
-      <Name>BrewingRecipes.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
