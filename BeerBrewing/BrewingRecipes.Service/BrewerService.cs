@@ -10,16 +10,11 @@ namespace BrewingRecipes.Service
 {
     public class BrewerService
     {
-
-        private BrewingRecipesContext context;
-
-        public BrewerService()
-        {
-            context = new BrewingRecipesContext();
-        }
         public List<IBrewer>  GetByName(string name)
         {
-                return context.Brewers
+            using (var context = new BrewingRecipesContext())
+            {
+                return context.Brewers.AsNoTracking()
                     .Where(x => x.Name.Contains(name))
                     .Select(x =>
                     new Brewer
@@ -28,20 +23,37 @@ namespace BrewingRecipes.Service
                         Name = x.Name,
                         EmailAddress = x.EmailAddress
                     }).ToList().Cast<IBrewer>().ToList();
+            }
         }
 
-        public void Add(IBrewer brewerData)
+        public bool Add(IBrewer brewerData)
         {
-            context.Brewers.Add(
+            using (var context = new BrewingRecipesContext())
+            {
+                context.Brewers.Add(
                 new BrewingRecipes.EntityFrameworkPersistenceModel.Brewer
                 {
                     Name = brewerData.Name,
                     EmailAddress = brewerData.EmailAddress
                 }
                 );
-            context.SaveChanges();
+                context.SaveChanges();
+                return true;
+            }
 
         }
+
+        public void Delete(IBrewer brewerData)
+        {
+            using (var context = new BrewingRecipesContext())
+            {
+                var targetBrewer = context.Brewers.Find(brewerData.BrewerId);
+                if (targetBrewer != null)
+                    context.Brewers.Remove(targetBrewer);
+                context.SaveChanges();
+            }
+        }
+        
 
     }
 }

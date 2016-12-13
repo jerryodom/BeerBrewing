@@ -26,6 +26,7 @@ namespace BrewingRecipes.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Types().Configure(x => x.Ignore("IsDirty"));
             modelBuilder.HasDefaultSchema("BrewingRecipes");
             modelBuilder.Configurations.Add(new BrewerConfiguration());
             modelBuilder.Configurations.Add(new BeerRecipeConfiguration());
@@ -36,6 +37,30 @@ namespace BrewingRecipes.Data
             modelBuilder.Configurations.Add(new FermentableBaseConfiguration());
             modelBuilder.Configurations.Add(new BitterBaseConfiguration());
             base.OnModelCreating(modelBuilder);
+        }
+        public override int SaveChanges()
+        {
+            foreach (var history in this.ChangeTracker.Entries()
+              .Where(e => e.Entity is IHistory && (e.State == EntityState.Added ||
+                      e.State == EntityState.Modified))
+               .Select(e => e.Entity as IHistory)
+              )
+            {
+                history.DateModified = DateTime.Now;
+                if (history.DateCreated == DateTime.MinValue)
+                {
+                    history.DateCreated = DateTime.Now;
+                }
+            }
+            int result = base.SaveChanges();
+            foreach (var history in this.ChangeTracker.Entries()
+                                          .Where(e => e.Entity is IHistory)
+                                          .Select(e => e.Entity as IHistory)
+              )
+            {
+                history.IsDirty = false;
+            }
+            return result;
         }
     }
 

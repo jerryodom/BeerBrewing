@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BrewingRecipes.EntityFrameworkPersistenceModel
 {
-    public class Fermentable
+    public class Fermentable : IHistory
     {
         public BeerRecipe Recipe { get; set; }
         public int RecipeId { get; set; }
@@ -35,6 +35,11 @@ namespace BrewingRecipes.EntityFrameworkPersistenceModel
         {
             get; set;
         }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateModified { get; set; }
+        public DateTime? DateDeleted { get; set; }
+
+        public bool IsDirty { get; set; }
 
     }
 }

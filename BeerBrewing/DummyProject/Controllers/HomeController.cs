@@ -14,9 +14,9 @@ namespace DummyProject.Controllers
         public ActionResult Index()
         {
 
-            var myBrewer = new BrewingRecipes.Domain.Brewer();
+            IBrewer myBrewer = new BrewingRecipes.Domain.Brewer();
             myBrewer.Name = "Wayne";
-            brewService.Add(myBrewer as IBrewer);
+            brewService.Add(myBrewer);
             ViewBag.Title = "Home Page";
 
             return View();
